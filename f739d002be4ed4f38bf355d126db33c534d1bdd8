@@ -1,0 +1,11 @@
+Code-Review+2: James E. Blair <corvus@inaugust.com>
+Verified+2: Jenkins
+Code-Review+1: Dave Walker <Dave.Walker@canonical.com>
+Approved+1: Clark Boylan <clark.boylan@gmail.com>
+Code-Review+2: Clark Boylan <clark.boylan@gmail.com>
+Code-Review+2: Jeremy Stanley <fungi@yuggoth.org>
+Submitted-by: Jenkins
+Submitted-at: Mon, 26 Nov 2012 20:56:58 +0000
+Reviewed-on: https://review.openstack.org/16808
+Project: openstack-ci/lodgeit
+Branch: refs/heads/master
