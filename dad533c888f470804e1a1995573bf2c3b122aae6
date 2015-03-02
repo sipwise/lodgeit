@@ -16,6 +16,24 @@
       "revId": "dad533c888f470804e1a1995573bf2c3b122aae6",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba7be1f8_872092f8",
+        "filename": "lodgeit/views/help/integration.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2015-03-02T15:47:20Z",
+      "side": 1,
+      "message": "okay but which one is better?\n\n- http://git.openstack.org/cgit/openstack-infra/lodgeit/plain/scripts/lodgeit.py\n- http://git.openstack.org/cgit/openstack-infra/lodgeit/tree/scripts/lodgeit.py",
+      "parentUuid": "ba7be1f8_a4d674ef",
+      "revId": "dad533c888f470804e1a1995573bf2c3b122aae6",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
     }
   ]
 }
