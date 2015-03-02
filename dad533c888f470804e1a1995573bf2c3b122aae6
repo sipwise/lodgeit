@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba7be1f8_a4d674ef",
+        "filename": "lodgeit/views/help/integration.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1726
+      },
+      "writtenOn": "2015-03-02T15:27:51Z",
+      "side": 1,
+      "message": "Better to use openstack git services: http://git.openstack.org/cgit/openstack-infra/lodgeit/tree/scripts/lodgeit.py",
+      "revId": "dad533c888f470804e1a1995573bf2c3b122aae6",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
