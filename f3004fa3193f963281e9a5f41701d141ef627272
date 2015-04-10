@@ -140,6 +140,24 @@
       "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_86c3de56",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-04-10T06:32:29Z",
+      "side": 1,
+      "message": "I don\u0027t see why it\u0027s a problem.  It\u0027s a paragraph describing what is being done. It\u0027s not like a list of steps that will result in the user running the clone command two times.\n\nI\u0027m sure it can be improved, but like my comment at line 13 such a modification is out of the scope of this commit.",
+      "parentUuid": "9aa53dc9_e6fbcabf",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
     }
   ]
 }
