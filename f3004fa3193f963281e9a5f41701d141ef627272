@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_fda11947",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7069
+      },
+      "writtenOn": "2015-04-10T03:44:31Z",
+      "side": 1,
+      "message": "don\u0027t really need to change into it as git clone will create a directory but this doesn\u0027t hurt",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
