@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9aa53dc9_c6f8c6c5",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 12182
+      },
+      "writtenOn": "2015-04-10T06:25:18Z",
+      "side": 1,
+      "message": "sorry, may be i got too picky ;)",
+      "parentUuid": "9aa53dc9_e6b18a48",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa53dc9_fda11947",
         "filename": "README",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I don\u0027t understand this comment.  We\u0027re only cloning it once.",
       "parentUuid": "9aa53dc9_239d240a",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_e6fbcabf",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 12182
+      },
+      "writtenOn": "2015-04-10T06:25:18Z",
+      "side": 1,
+      "message": "Exactly. In line 25 its mentioned as \"clone LodgeIt from the git repository\" and again in line 28 there is a reference to \"clone LodgeIt\" again.",
+      "parentUuid": "9aa53dc9_033ea0d9",
       "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
