@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9aa53dc9_e38bbcc1",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 12182
+      },
+      "writtenOn": "2015-04-10T05:56:50Z",
+      "side": 1,
+      "message": "s/on/in",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa53dc9_fda11947",
         "filename": "README",
         "patchSetId": 1
@@ -13,6 +30,23 @@
       "writtenOn": "2015-04-10T03:44:31Z",
       "side": 1,
       "message": "don\u0027t really need to change into it as git clone will create a directory but this doesn\u0027t hurt",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_239d240a",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 12182
+      },
+      "writtenOn": "2015-04-10T05:56:50Z",
+      "side": 1,
+      "message": "We don\u0027t need to clone lodgeit again",
       "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
