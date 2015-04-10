@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9aa53dc9_e6b18a48",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-04-10T06:11:24Z",
+      "side": 1,
+      "message": "Deliberately unchanged.  I only corrected the obvious spelling mistake.\n\nThe rest of this paragraph is weird (\"Next to this\", \"quite a few of\") and should be rewritten, but that is outside the scope of this change, which is only to change mercurial to git.",
+      "parentUuid": "9aa53dc9_e38bbcc1",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa53dc9_fda11947",
         "filename": "README",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9aa53dc9_462dd693",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-04-10T06:11:24Z",
+      "side": 1,
+      "message": "I didn\u0027t change this because I thought it better to keep the structure same as is was before. Lines 54-55 refer to the virtual environment being in one level above the lodgeit repository folder, which would be the lodgeit-dev folder.",
+      "parentUuid": "9aa53dc9_fda11947",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa53dc9_239d240a",
         "filename": "README",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-04-10T05:56:50Z",
       "side": 1,
       "message": "We don\u0027t need to clone lodgeit again",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_033ea0d9",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-04-10T06:11:24Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment.  We\u0027re only cloning it once.",
+      "parentUuid": "9aa53dc9_239d240a",
       "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
