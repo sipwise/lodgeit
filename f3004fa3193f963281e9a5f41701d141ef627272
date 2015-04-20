@@ -193,6 +193,24 @@
       "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dac4157f_36ff5103",
+        "filename": "README",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-04-20T03:29:21Z",
+      "side": 1,
+      "message": "I can update this, but what\u0027s the benefit of cloning from git.openstack.org rather than review.openstack.org?\n\nFrom my point of view, as a developer, it\u0027s better to clone off the review site because then I don\u0027t need to add another remote if I want to push a change back.",
+      "parentUuid": "3ab451fb_80958fe5",
+      "revId": "f3004fa3193f963281e9a5f41701d141ef627272",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
     }
   ]
 }
