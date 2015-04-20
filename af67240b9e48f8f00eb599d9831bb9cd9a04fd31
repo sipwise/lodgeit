@@ -16,6 +16,24 @@
       "revId": "af67240b9e48f8f00eb599d9831bb9cd9a04fd31",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dac4157f_51c1af2d",
+        "filename": "README",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-04-20T05:28:07Z",
+      "side": 1,
+      "message": "See lines 44 and 54 which both state the assumption about the location when the command is run.",
+      "parentUuid": "dac4157f_318f5b25",
+      "revId": "af67240b9e48f8f00eb599d9831bb9cd9a04fd31",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
     }
   ]
 }
