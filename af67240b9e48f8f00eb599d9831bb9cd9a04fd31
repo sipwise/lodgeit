@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dac4157f_318f5b25",
+        "filename": "README",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7069
+      },
+      "writtenOn": "2015-04-20T05:24:39Z",
+      "side": 1,
+      "message": "This will create a new folder inside \u0027lodgeit-dev\u0027 called \u0027lodgeit\u0027. This is fine but it makes the rest of this document wrong as it says to call \"scripts/make-bootstrap.py\" which is now \"lodgeit/scripts...\".\n\nI\u0027d suggest doing:\n  git clone https://git.openstack.org/openstack-infra/lodgeit .\n\nOr otherwise instruct the user to do the clone and then change into the (lodgeit) folder ommitting the part of creating a new lodgeit-dev folder.",
+      "revId": "af67240b9e48f8f00eb599d9831bb9cd9a04fd31",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
