@@ -34,6 +34,24 @@
       "revId": "af67240b9e48f8f00eb599d9831bb9cd9a04fd31",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab921fb_48468b24",
+        "filename": "README",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7069
+      },
+      "writtenOn": "2015-04-23T12:43:41Z",
+      "side": 1,
+      "message": "My mistake, missed that. Thanks",
+      "parentUuid": "dac4157f_51c1af2d",
+      "revId": "af67240b9e48f8f00eb599d9831bb9cd9a04fd31",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
     }
   ]
 }
