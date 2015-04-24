@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-04-24 16:27+0900\n"
+"POT-Creation-Date: 2015-04-24 16:29+0900\n"
 "PO-Revision-Date: 2008-09-20 17:45+0200\n"
 "Last-Translator: Christopher Grebs <cg@webshox.org>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -467,31 +467,15 @@ msgstr ""
 "Sorry, aber die angeforderte Seite konnte auf diesem Server nicht "
 "gefunden werden."
 
-#: lodgeit/views/not_found.html:7
-msgid ""
-"\n"
-"    We've recently updated this pastebin. While it is out goal for "
-"nothing to get\n"
-"    lost, you may have found a page that was mis-placed. Check your URL "
-"to ensure\n"
-"    you have gone where you intended. If everything looks OK and you "
-"still see\n"
-"    this error page, please consider "
-msgstr ""
-
-#: lodgeit/views/not_found.html:12
-msgid "contacting us"
-msgstr ""
-
-#: lodgeit/views/not_found.html:15
+#: lodgeit/views/not_found.html:8
 msgid "Click "
 msgstr ""
 
-#: lodgeit/views/not_found.html:16
+#: lodgeit/views/not_found.html:9
 msgid "here"
 msgstr ""
 
-#: lodgeit/views/not_found.html:17
+#: lodgeit/views/not_found.html:10
 msgid " to add a new paste."
 msgstr ""
 
@@ -1187,13 +1171,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "command-line <a href=\"http://dev.pocoo.org/hg"
-#~ "/lodgeit-main/raw-file/-1/scripts/lodgeit.py\">client "
-#~ "script</a>"
 #~ msgstr ""
-#~ "Kommando-Zeilen basiertes <a "
-#~ "href=\"http://dev.pocoo.org/hg/lodgeit-main/raw-"
-#~ "file/-1/scripts/lodgeit.py\">Script</a>"
 
 #~ msgid "vim integration"
 #~ msgstr "Vim Integration"
@@ -1203,6 +1181,15 @@ msgstr ""
 
 #~ msgid "All"
 #~ msgstr "Alle"
+
+#~ msgid "Click <a href=\"/\">here</a> to add a new paste."
+#~ msgstr "Klicke <a href=\"/\">hier</a> um einen neuen Paste zu erstellen."
+
+#~ msgid "List of supported formatters:"
+#~ msgstr ""
+
+#~ msgid "Quickstart"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "\n"
@@ -1216,43 +1203,8 @@ msgstr ""
 #~ "intended. If everything looks OK and "
 #~ "you still see\n"
 #~ "    this error page, please consider "
-#~ "<a href=\"/about\">contacting us</a>."
-#~ msgstr ""
-#~ "\n"
-#~ "    Wir haben den Pastebin letztens "
-#~ "aktualisiert und da dabei nichts "
-#~ "verloren gehen sollte,\n"
-#~ "    hast du vermutlich eine fehlerhafte"
-#~ " Seite gefunden. Bitte überprüfe die "
-#~ "URL um sicherzugehen\n"
-#~ "    das du richtig bist. Wenn alles OK ist und du immernoch diese\n"
-#~ "    Fehlerseite siehst, <a href=\"/about\">kontaktiere uns</a> bitte."
-
-#~ msgid "Click <a href=\"/\">here</a> to add a new paste."
-#~ msgstr "Klicke <a href=\"/\">hier</a> um einen neuen Paste zu erstellen."
-
-#~ msgid "List of supported formatters:"
 #~ msgstr ""
 
-#~ msgid ""
-#~ "\n"
-#~ "    If you use the reply feature"
-#~ " a link to the parent paste is"
-#~ " created\n"
-#~ "    automatically. This allows you to"
-#~ " compare those two pastes with one"
-#~ "\n"
-#~ "    click to find changes easily. For information about the diff view\n"
-#~ "    head over to the <a "
-#~ "href=\"/help/advanced/\">advanced features</a> page."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "\n"
-#~ "    The XMLRPC Interface is available at <tt>%(xmlrpc_url)s</tt>.\n"
-#~ "    (Note the trailing slash!)"
-#~ msgstr ""
-
-#~ msgid "Quickstart"
+#~ msgid "contacting us"
 #~ msgstr ""
 
