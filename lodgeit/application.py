@@ -13,6 +13,7 @@ from datetime import datetime, timedelta
 from werkzeug import SharedDataMiddleware, ClosingIterator
 from werkzeug.exceptions import HTTPException, NotFound
 from sqlalchemy import create_engine
+from sqlalchemy.pool import NullPool
 from lodgeit import i18n
 from lodgeit.local import ctx, _local_manager
 from lodgeit.urls import urlmap
@@ -29,7 +30,8 @@ class LodgeIt(object):
         self.secret_key = secret_key
 
         #: bind metadata, create engine and create all tables
-        self.engine = engine = create_engine(dburi, convert_unicode=True)
+        self.engine = engine = create_engine(
+            dburi, convert_unicode=True, poolclass=NullPool)
         db.metadata.bind = engine
         db.metadata.create_all(engine, [Paste.__table__])
 
