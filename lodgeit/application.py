@@ -24,11 +24,12 @@ from lodgeit.controllers import get_controller
 class LodgeIt(object):
     """The WSGI Application"""
 
-    def __init__(self, dburi, secret_key):
+    def __init__(self, dburi, secret_key, pool_recycle=3600):
         self.secret_key = secret_key
 
         #: bind metadata, create engine and create all tables
-        self.engine = engine = create_engine(dburi, convert_unicode=True)
+        self.engine = engine = create_engine(
+            dburi, convert_unicode=True, pool_recycle=pool_recycle)
         db.metadata.bind = engine
         db.metadata.create_all(engine, [Paste.__table__])
 
@@ -84,7 +85,8 @@ def make_app(dburi=None, secret_key=None, debug=False, shell=False):
         secret_key = os.getenv('LODGEIT_SECRET_KEY')
 
     static_path = os.path.join(os.path.dirname(__file__), 'static')
-    app = LodgeIt(dburi, secret_key)
+    app = LodgeIt(dburi, secret_key,
+                  pool_recycle=os.getenv('LODGEIT_POOL_RECYCLE', 3600))
     if debug:
         app.engine.echo = True
     app.bind_to_context()
