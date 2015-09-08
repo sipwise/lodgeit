@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da20952f_e5dfc138",
+        "filename": "lodgeit/controllers/pastes.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 7069
+      },
+      "writtenOn": "2015-09-08T12:34:40Z",
+      "side": 1,
+      "message": "why check if the identifier is a digit?",
+      "revId": "0ef0c909c3ef3595146a4e8a1dfb5320ddaa0a8f",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
