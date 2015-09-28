@@ -34,6 +34,9 @@ class StaticController(object):
     def about(self):
         return render_to_response('about.html')
 
+    def robots(self):
+        return render_to_response('robots.txt')
+
     def help(self, topic=None):
         if topic is None:
             tmpl_name = 'help/index.html'

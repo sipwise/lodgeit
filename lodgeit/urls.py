@@ -32,6 +32,7 @@ urlmap = Map([
     Rule('/about/', endpoint='static/about'),
     Rule('/help/', endpoint='static/help'),
     Rule('/help/<topic>/', endpoint='static/help'),
+    Rule('/robots.txt', endpoint='static/robots'),
 
     # colorscheme
     Rule('/colorscheme/', endpoint='pastes/set_colorscheme'),
