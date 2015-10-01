@@ -1,3 +1,7 @@
 *.pyc
 .DS_Store
 bootstrap.py
+.project
+.pydevproject
+.settings
+ENV
