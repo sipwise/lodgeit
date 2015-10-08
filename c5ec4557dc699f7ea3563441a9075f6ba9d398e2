@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a2fa921_9b96c83c",
+        "filename": "lodgeit/i18n/de/LC_MESSAGES/messages.po",
+        "patchSetId": 1
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 6609
+      },
+      "writtenOn": "2015-10-08T18:23:58Z",
+      "side": 1,
+      "message": "Could be my understanding of .po files lacking, but why was this added?",
+      "revId": "c5ec4557dc699f7ea3563441a9075f6ba9d398e2",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
