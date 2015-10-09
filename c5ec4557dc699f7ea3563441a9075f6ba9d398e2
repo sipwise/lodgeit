@@ -16,6 +16,24 @@
       "revId": "c5ec4557dc699f7ea3563441a9075f6ba9d398e2",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a2fa921_1365b11c",
+        "filename": "lodgeit/i18n/de/LC_MESSAGES/messages.po",
+        "patchSetId": 1
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-10-09T01:19:27Z",
+      "side": 1,
+      "message": "It was added automatically when I ran:\n\n make extract-messages update-translations compile-translations\n\nI don\u0027t fully understand how it works either, but it looks like it\u0027s adding comments for the strings that have been removed.",
+      "parentUuid": "7a2fa921_9b96c83c",
+      "revId": "c5ec4557dc699f7ea3563441a9075f6ba9d398e2",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
     }
   ]
 }
