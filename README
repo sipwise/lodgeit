@@ -64,3 +64,23 @@ Now start the development server::
     python manage.py runserver
 
 Enjoy!
+
+Testing
+~~~~~~~
+
+To install the test dependencies, make sure you are in the virtual environment,
+and then run::
+
+    pip install -r test-requirements.txt
+
+To run the tests, simply run::
+
+    nosetests
+
+A successful test run should look something like:
+
+    .......
+    ----------------------------------------------------------------------
+    Ran 7 tests in 0.383s
+    
+    OK
