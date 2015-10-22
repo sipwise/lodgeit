@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a29b11f_fb29cee6",
+        "filename": "lodgeit/application.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 11816
+      },
+      "writtenOn": "2015-10-22T15:21:39Z",
+      "side": 1,
+      "message": "SQLAlchemy already provides this service in its own exception objects; these are raised if you intercept the connection at the Engine/Connection level and not the DBAPI/Pool level:\n\n    from sqlalchemy import exc\n\n    @event.listens_for(engine, \"engine_connect\")\n    def ping_db(connection, branch):\n        if branch:\n            return\n\n        try:\n            connection.scalar(select[1])\n        except exc.DBAPIError as err:\n            if err.connection_invalidated:\n                LOG.warn(\"%s connection went away\" % connection.engine.name)\n                raise DisconnectionError(\"database server went away\")\n            else:\n                raise\n\nI should be updating the pool documentation to talk about this; the connection pool is designed to be used without an engine/dialect but in practice nobody does that...",
+      "revId": "ce585f2ad56a286b4d30cf6a7032af00d822b3c7",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
