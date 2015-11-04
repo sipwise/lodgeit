@@ -1,5 +1,6 @@
 from tests import client, is_json, json
 from tests.utilities.runner import testcase
+from lodgeit.lib.highlighting import STYLES
 
 
 def post_json(method, data=None):
@@ -71,26 +72,7 @@ def test_json_get_recent():
 
 @testcase()
 def test_json_get_styles():
-    styles = [
-        ['monokai', 'Monokai'],
-        ['manni', 'Manni'],
-        ['perldoc', 'Perldoc'],
-        ['borland', 'Borland'],
-        ['colorful', 'Colorful'],
-        ['default', 'Default'],
-        ['murphy', 'Murphy'],
-        ['trac', 'Trac'],
-        ['tango', 'Tango'],
-        ['vim', 'Vim'],
-        ['autumn', 'Autumn'],
-        ['vs', 'Vs'],
-        ['emacs', 'Emacs'],
-        ['friendly', 'Friendly'],
-        ['bw', 'Bw'],
-        ['pastie', 'Pastie'],
-        ['fruity', 'Fruity'],
-        ['native', 'Native'],
-        ]
     resp = post_json('styles.getStyles')
     assert is_json(resp)
-    assert json(resp)['data'] == styles
+    expected = [[u'%s' % x, u'%s' % STYLES[x]] for x in STYLES]
+    assert json(resp)['data'] == expected
