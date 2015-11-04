@@ -95,7 +95,7 @@ class Paste(db.Model):
                 user_hash=local.request.user_hash).all()]
         paste_list = Paste.query.filter(db.and_(
             Paste.parent_id.in_(ids),
-            Paste.handled == False,
+            Paste.handled is False,
         )).order_by(Paste.paste_id.desc()).all()
         for paste in paste_list:
             paste.handled = True
