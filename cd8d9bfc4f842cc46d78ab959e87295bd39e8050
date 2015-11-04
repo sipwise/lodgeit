@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa80f949_f2e42b3c",
+        "filename": "tests/unittest/test_api.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-11-04T14:48:12Z",
+      "side": 1,
+      "message": "I tested this earlier on Ubuntu and it passed.  But now it fails on my Macbook.  Fix coming up in a separate change.",
+      "range": {
+        "startLine": 75,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "cd8d9bfc4f842cc46d78ab959e87295bd39e8050",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
