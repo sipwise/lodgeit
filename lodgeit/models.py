@@ -34,8 +34,8 @@ class Paste(db.Model):
     private_id = db.Column(db.String(40), unique=True, nullable=True)
 
     children = db.relation('Paste', cascade='all',
-        primaryjoin=parent_id == paste_id,
-        backref=db.backref('parent', remote_side=[paste_id]))
+                           primaryjoin=parent_id == paste_id,
+                           backref=db.backref('parent', remote_side=[paste_id]))
 
     def __init__(self, code, language, parent_id=None, user_hash=None,
                  private=False):
