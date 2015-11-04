@@ -32,6 +32,8 @@ def exported(name, hidden=False):
 
 
 _public_methods = None
+
+
 def get_public_methods():
     """Returns the public methods."""
     global _public_methods
