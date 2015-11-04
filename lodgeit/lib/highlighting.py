@@ -167,11 +167,12 @@ def highlight_multifile(code):
         start, filename, lang = last
         section_code = _escaped_marker.sub('', code[start:pos])
         if section_code:
+            if filename:
+                filename_html = u'<p class="filename">%s</p>' % escape(filename)
+            else:
+                filename_html = u''
             result.append(u'<div class="section">%s%s</div>' % (
-                filename and u'<p class="filename">%s</p>'
-                    % escape(filename) or u'',
-                highlight(section_code, lang)
-            ))
+                filename_html, highlight(section_code, lang)))
 
     for match in _section_marker_re.finditer(code):
         start = match.start()
