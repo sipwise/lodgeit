@@ -23,7 +23,7 @@ from lodgeit.lib.captcha import check_hashed_solution, Captcha
 class PasteController(object):
     """Provides all the handler callback for paste related stuff."""
 
-    #XXX:dc: using language here clashes with internationalization terms
+    # XXX:dc: using language here clashes with internationalization terms
     def new_paste(self, language=None):
         """The 'create a new paste' view."""
         language = local.request.args.get('language', language)
@@ -154,7 +154,7 @@ class PasteController(object):
         style_name = local.request.form.get('style')
         resp = redirect(local.request.headers.get('referer') or
                         url_for('pastes/new_paste'))
-        #XXX:dc: use some sort of form element validation instead
+        # XXX:dc: use some sort of form element validation instead
         if style_name in STYLES:
             resp.set_cookie('style', style_name)
         return resp
