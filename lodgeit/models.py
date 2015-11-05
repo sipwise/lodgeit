@@ -92,7 +92,7 @@ class Paste(db.Model):
         """
         # XXX:dc:clean this query up to just return the ids
         ids = [x.paste_id for x in Paste.query.filter_by(
-                user_hash=local.request.user_hash).all()]
+               user_hash=local.request.user_hash).all()]
         paste_list = Paste.query.filter(db.and_(
             Paste.parent_id.in_(ids),
             Paste.handled is False,

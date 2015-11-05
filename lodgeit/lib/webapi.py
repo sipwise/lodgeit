@@ -14,7 +14,7 @@ from lodgeit.database import db
 from lodgeit.lib.xmlrpc import XMLRPCRequestHandler
 from lodgeit.lib.json import JSONRequestHandler
 from lodgeit.lib.highlighting import STYLES, LANGUAGES, get_style, \
-     get_language_for
+    get_language_for
 
 
 xmlrpc = XMLRPCRequestHandler()

@@ -14,7 +14,7 @@ import csv
 from operator import itemgetter
 from pygments.util import ClassNotFound
 from pygments.lexers import get_lexer_by_name, get_lexer_for_filename, \
-     get_lexer_for_mimetype, PhpLexer, TextLexer, get_all_lexers
+    get_lexer_for_mimetype, PhpLexer, TextLexer, get_all_lexers
 from pygments.styles import get_all_styles
 from pygments.formatters import HtmlFormatter
 
@@ -23,7 +23,7 @@ from lodgeit.i18n import lazy_gettext as _
 from lodgeit.utils import render_template
 from lodgeit.lib.diff import prepare_udiff
 from lodgeit.lib.compilerparser import parse_gcc_messages, \
-     parse_javac_messages
+    parse_javac_messages
 
 from werkzeug import escape
 
