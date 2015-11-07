@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da85f559_d03fd5d4",
+        "filename": "lodgeit/controllers/pastes.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 6547
+      },
+      "writtenOn": "2015-11-07T09:25:03Z",
+      "side": 1,
+      "message": "OpenStack practice is to use TODO(dc) here - but out of scope for this change",
+      "revId": "812b4c9ae52af1b7339298743ea32a54828b2a7e",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
