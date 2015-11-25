@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a8ffd7b_c8f94a4f",
+        "filename": "lodgeit/views/about.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-11-25T00:35:29Z",
+      "side": 1,
+      "message": "Probably needs to be in a {% trans %} block.",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "fa51a0e92085c83f7d660bf92fa08d0dbcff8d73",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
