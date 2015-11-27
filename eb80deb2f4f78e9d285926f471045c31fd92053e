@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a8ffd7b_6e6a26b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-11-27T07:27:04Z",
+      "side": 1,
+      "message": "Mention that it was removed in fbb61e9c1d6f4962b43787fbf636339ac9659cbb and has broken wsgi (although running by manage.py works).",
+      "revId": "eb80deb2f4f78e9d285926f471045c31fd92053e",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
