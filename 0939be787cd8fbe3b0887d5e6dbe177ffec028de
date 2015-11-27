@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a8ffd7b_6e98e6c0",
+        "filename": "lodgeit/__init__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 10731
+      },
+      "writtenOn": "2015-11-27T07:28:46Z",
+      "side": 0,
+      "message": "Removing this line fixes the pep8 warning, but breaks the wsgi deployment of the site.  I had only tested by using the manage.py\n\nFix is uploaded here:\n\nhttps://review.openstack.org/#/c/250643/1",
+      "revId": "0939be787cd8fbe3b0887d5e6dbe177ffec028de",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
