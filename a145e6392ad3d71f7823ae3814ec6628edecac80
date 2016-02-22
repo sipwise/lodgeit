@@ -1,0 +1,9 @@
+Code-Review+2: yolanda.robla <info@ysoft.biz>
+Code-Review+2: Spencer Krum <nibz@spencerkrum.com>
+Workflow+1: Spencer Krum <nibz@spencerkrum.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 22 Feb 2016 06:50:34 +0000
+Reviewed-on: https://review.openstack.org/258849
+Project: openstack-infra/lodgeit
+Branch: refs/heads/master
