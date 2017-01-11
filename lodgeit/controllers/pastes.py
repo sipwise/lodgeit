@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
     lodgeit.controllers.pastes
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -179,5 +178,6 @@ class PasteController(object):
     def show_captcha(self):
         """Show a captcha."""
         return Captcha().get_response(set_cookie=True)
+
 
 controller = PasteController

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
     lodgeit.database
     ~~~~~~~~~~~~~~~~
@@ -23,6 +22,7 @@ metadata = MetaData()
 def session_factory():
     options = {'autoflush': True, 'autocommit': False}
     return orm.create_session(application.engine, **options)
+
 
 session = orm.scoped_session(session_factory,
                              scopefunc=_local_manager.get_ident)
@@ -54,5 +54,6 @@ def _make_module():
     db.Model = Model
     db.NoResultFound = orm.exc.NoResultFound
     return db
+
 
 sys.modules['lodgeit.database.db'] = db = _make_module()

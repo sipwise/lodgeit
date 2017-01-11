@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
     lodgeit.lib.highlighting
     ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,6 +36,7 @@ def _get_pygments_lexers(add_empty=True):
     for lexer in get_all_lexers():
         r.append((lexer[1][0], _(lexer[0])),)
     return r
+
 
 LANGUAGES = _get_pygments_lexers()
 #: Add LodgeIt's special language lexers
