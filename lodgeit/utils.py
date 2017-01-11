@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
     lodgeit.utils
     ~~~~~~~~~~~~~
@@ -42,6 +41,7 @@ COOKIE_NAME = u'lodgeit_session'
 def url_for(endpoint, external=False, **values):
     builder = local.ctx.url_adapter.build
     return builder(endpoint, values, force_external=external)
+
 
 jinja_environment.globals['url_for'] = url_for
 
