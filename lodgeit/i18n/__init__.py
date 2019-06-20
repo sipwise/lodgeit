@@ -64,10 +64,10 @@ def list_languages():
            os.path.isdir(os.path.join(folder, filename)):
             continue
         try:
-            l = Locale.parse(filename)
+            locale = Locale.parse(filename)
         except UnknownLocaleError:
             continue
-        languages.append((str(l), l.display_name))
+        languages.append((str(locale), locale.display_name))
 
     languages.sort(key=lambda x: x[1].lower())
     return languages
@@ -170,7 +170,7 @@ class _TranslationProxy(object):
     def __repr__(self):
         try:
             return 'i' + repr(unicode(self.value))
-        except:
+        except ValueError:
             return '<%s broken>' % self.__class__.__name__
 
 
