@@ -26,7 +26,7 @@ from lodgeit.i18n import get_translations
 
 try:
     from hashlib import sha1
-except:
+except ImportError:
     from sha import new as sha1
 
 #: Jinja2 Environment for our template handling
