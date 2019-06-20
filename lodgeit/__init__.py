@@ -13,5 +13,5 @@ import subprocess
 
 try:
     lodgeit_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'])[:7]
-except:
+except ImportError:
     lodgeit_version = ""
