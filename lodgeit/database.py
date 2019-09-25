@@ -8,6 +8,7 @@
     :copyright: 2007-2010 by Armin Ronacher, Christopher Grebs.
     :license: BSD
 """
+import six
 import sys
 from types import ModuleType
 import sqlalchemy
@@ -46,7 +47,7 @@ ModelBase.query = session.query_property()
 def _make_module():
     db = ModuleType('db')
     for mod in sqlalchemy, orm:
-        for key, value in mod.__dict__.iteritems():
+        for key, value in six.iteritems(mod.__dict__):
             if key in mod.__all__:
                 setattr(db, key, value)
 
