@@ -9,6 +9,7 @@
     :license: BSD
 """
 import re
+import six
 import time
 from os import path
 from random import random
