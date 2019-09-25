@@ -64,7 +64,7 @@ class LodgeIt(object):
         except NotFound:
             handler = get_controller('static/not_found')
             resp = handler()
-        except HTTPException, e:
+        except HTTPException as e:
             resp = e.get_response(environ)
         else:
             expires = datetime.utcnow() + timedelta(days=31)

@@ -22,6 +22,7 @@
               2006 Matt Good <matt@matt-good.net>,
               2005 Raphael Slinckx <raphael@slinckx.net>
 """
+from __future__ import print_function
 import os
 import sys
 from optparse import OptionParser
@@ -39,7 +40,7 @@ _server_name = None
 
 def fail(msg, code):
     """Bail out with an error message."""
-    print >> sys.stderr, 'ERROR: %s' % msg
+    print('ERROR: %s' % msg, file=sys.stderr)
     sys.exit(code)
 
 
@@ -110,7 +111,7 @@ def get_xmlrpc_service():
         try:
             _xmlrpc_service = xmlrpclib.ServerProxy(_server_name + 'xmlrpc/',
                                                     allow_none=True)
-        except Exception, err:
+        except Exception as err:
             fail('Could not connect to Pastebin: %s' % err, -1)
     return _xmlrpc_service
 
@@ -185,9 +186,9 @@ def print_languages():
     xmlrpc = get_xmlrpc_service()
     languages = xmlrpc.pastes.getLanguages().items()
     languages.sort(lambda a, b: cmp(a[1].lower(), b[1].lower()))
-    print 'Supported Languages:'
+    print('Supported Languages:')
     for alias, name in languages:
-        print '    %-30s%s' % (alias, name)
+        print('    %-30s%s' % (alias, name))
 
 
 def download_paste(uid):
@@ -196,7 +197,7 @@ def download_paste(uid):
     paste = xmlrpc.pastes.getPaste(uid)
     if not paste:
         fail('Paste "%s" does not exist.' % uid, 5)
-    print paste['code'].encode('utf-8')
+    print(paste['code'].encode('utf-8'))
 
 
 def create_paste(code, language, filename, mimetype, private):
@@ -221,7 +222,7 @@ def compile_paste(filenames, langopt):
     lang = langopt or ''
     if not filenames:
         data = read_file(sys.stdin)
-        print 'Pasting...'
+        print('Pasting...')
         if not langopt:
             mime = get_mimetype(data, '') or ''
         fname = ''
@@ -292,7 +293,7 @@ def main():
     # special modes of operation:
     # - paste script version
     if opts.version:
-        print '%s: version %s' % (SCRIPT_NAME, VERSION)
+        print('%s: version %s' % (SCRIPT_NAME, VERSION))
         sys.exit()
     # - print list of languages
     elif opts.languages:
@@ -319,7 +320,7 @@ def main():
     code = make_utf8(data, opts.encoding)
     pid = create_paste(code, language, filename, mimetype, opts.private)
     url = '%sshow/%s/' % (_server_name, pid)
-    print url
+    print(url)
     if opts.open_browser:
         open_webbrowser(url)
     if opts.clipboard:
