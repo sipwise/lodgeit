@@ -65,7 +65,7 @@ def list_languages():
             continue
         try:
             l = Locale.parse(filename)
-        except UnknownLocaleError:
+        except (UnknownLocaleError, ValueError):
             continue
         languages.append((str(l), l.display_name))
 
