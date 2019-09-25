@@ -3,8 +3,9 @@
       jobs:
         - tox-pep8
         - tox-py27
+        - tox-py36
     gate:
       jobs:
         - tox-pep8
         - tox-py27
-
+        - tox-py36

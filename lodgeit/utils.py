@@ -8,6 +8,7 @@
     :copyright: 2007-2008 by Christopher Grebs.
     :license: BSD
 """
+import base64
 import re
 import time
 from os import path
@@ -49,14 +50,16 @@ jinja_environment.globals['url_for'] = url_for
 
 def generate_user_hash():
     """Generates an more or less unique SHA1 hash."""
-    return sha1('%s|%s' % (random(), time.time())).hexdigest()
+    hash_base = '%s|%s' % (random(), time.time())
+    return sha1(hash_base.encode()).hexdigest()
 
 
 def generate_paste_hash():
     """Generates a more or less unique-truncated SHA1 hash."""
     while 1:
-        digest = sha1('%s|%s' % (random(), time.time())).digest()
-        val = _word_only(digest.encode('base64').strip())[:20]
+        hash_base = '%s|%s' % (random(), time.time())
+        digest = sha1(hash_base.encode()).digest()
+        val = _word_only(str(base64.b64encode(digest)).strip())[:20]
         # sanity check.  number only not allowed (though unlikely)
         if not val.isdigit():
             return val
