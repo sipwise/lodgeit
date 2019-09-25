@@ -6,6 +6,7 @@
 
     Creates a bootstrap script for LodgeIt
 """
+from __future__ import print_function
 from virtualenv import create_bootstrap_script
 
 
@@ -33,4 +34,4 @@ def easy_install(package, home_dir, optional_args=None):
 """
 
 if __name__ == '__main__':
-    print create_bootstrap_script(EXTRA_TEXT)
+    print(create_bootstrap_script(EXTRA_TEXT))

@@ -18,13 +18,13 @@
   <pre class="sample">{% filter escape %}
 >>> from xmlrpclib import ServerProxy
 >>> s = ServerProxy('{{ pastebin_url|escape }}xmlrpc/')
-{% endfilter %}</pre>  
+{% endfilter %}</pre>
   <p>
     {% trans %}For example if you want to fetch one paste from the server you can do this:{% endtrans %}
   </p>
 <pre class="sample">{% filter escape %}
 >>> paste = s.pastes.getPaste(23)
->>> print paste['code']
+>>> print(paste['code'])
 '{{ "{% if users %}" }}\n...'
 {% endfilter %}</pre>
   <h3>{% trans %}JSON Quickstart{% endtrans %}</h3>

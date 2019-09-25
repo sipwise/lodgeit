@@ -10,7 +10,10 @@
 """
 import sys
 import re
-from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
+try:
+    from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
+except ImportError:
+    from xmlrpc.server import SimpleXMLRPCDispatcher
 from werkzeug import Response
 from lodgeit import local
 
