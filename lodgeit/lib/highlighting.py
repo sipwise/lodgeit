@@ -9,6 +9,7 @@
     :license: BSD
 """
 import re
+import six
 import pygments
 import csv
 from operator import itemgetter
@@ -195,7 +196,7 @@ def get_style(request=None, name_only=False):
     request = request or local.request
     if not request:
         style_name = DEFAULT_STYLE
-    elif isinstance(request, basestring):
+    elif isinstance(request, six.string_types):
         style_name = request
     else:
         style_name = request.cookies.get('style')
@@ -251,6 +252,6 @@ def get_known_alias(lexer, default='text'):
 
 def list_languages():
     """List all languages."""
-    languages = LANGUAGES.items()
+    languages = list(LANGUAGES.items())
     languages.sort(key=lambda x: x[1].lstrip(' _-.').lower())
     return languages

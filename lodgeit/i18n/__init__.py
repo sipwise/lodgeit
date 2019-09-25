@@ -11,6 +11,7 @@
 import os
 from babel import Locale, dates, UnknownLocaleError
 from babel.support import Translations
+from six import text_type
 
 from lodgeit import local
 
@@ -65,7 +66,7 @@ def list_languages():
             continue
         try:
             locale = Locale.parse(filename)
-        except UnknownLocaleError:
+        except (UnknownLocaleError, ValueError):
             continue
         languages.append((str(locale), locale.display_name))
 
@@ -109,7 +110,7 @@ class _TranslationProxy(object):
         return bool(self.value)
 
     def __dir__(self):
-        return dir(unicode)
+        return dir(text_type)
 
     def __iter__(self):
         return iter(self.value)
@@ -121,7 +122,7 @@ class _TranslationProxy(object):
         return str(self.value)
 
     def __unicode__(self):
-        return unicode(self.value)
+        return text_type(self.value)
 
     def __add__(self, other):
         return self.value + other
@@ -169,7 +170,7 @@ class _TranslationProxy(object):
 
     def __repr__(self):
         try:
-            return 'i' + repr(unicode(self.value))
+            return 'i' + repr(text_type(self.value))
         except ValueError:
             return '<%s broken>' % self.__class__.__name__
 
