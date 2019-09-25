@@ -11,6 +11,7 @@
 import time
 import difflib
 from datetime import datetime
+from six import string_types
 from werkzeug import cached_property
 
 from lodgeit import local
@@ -56,7 +57,7 @@ class Paste(db.Model):
         """Return the paste for an identifier.  Private pastes must be loaded
         with their unique hash and public with the paste id.
         """
-        if isinstance(identifier, basestring) and not identifier.isdigit():
+        if isinstance(identifier, string_types) and not identifier.isdigit():
             query = Paste.query.filter_by(private_id=identifier)
         else:
             query = Paste.query.filter_by(paste_id=int(identifier))

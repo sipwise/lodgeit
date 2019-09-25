@@ -24,6 +24,11 @@ try:
 except ImportError:
     from sha import new as sha1
 
+try:
+    xrange
+except NameError:
+    xrange = range
+
 resource_path = abspath(join(dirname(__file__), pardir, 'res'))
 
 
