@@ -12,6 +12,7 @@
 import random
 import colorsys
 import math
+from past.builtins import xrange
 from os import listdir
 from os.path import abspath, join, dirname, pardir
 from PIL import ImageFont, ImageDraw, Image, ImageChops, ImageColor
