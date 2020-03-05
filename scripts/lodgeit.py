@@ -186,9 +186,7 @@ def print_languages():
     """Print a list of all supported languages, with description."""
     xmlrpc = get_xmlrpc_service()
     languages = xmlrpc.pastes.getLanguages().items()
-    languages.sort(
-        lambda a, b: (a[1].lower() > b[1].lower())-(a[1].lower() < b[1].lower())
-    )
+    languages.sort(key=lambda a: a[1].lower())
     print('Supported Languages:')
     for alias, name in languages:
         print('    %-30s%s' % (alias, name))
