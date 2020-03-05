@@ -59,7 +59,7 @@ def test_json_get_recent():
         return resp
 
     paste_ids = []
-    for x in xrange(10):
+    for x in range(10):
         resp = run(x)
         paste_ids.append(int(json(resp)['data']))
 

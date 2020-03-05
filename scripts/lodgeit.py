@@ -22,8 +22,10 @@
               2006 Matt Good <matt@matt-good.net>,
               2005 Raphael Slinckx <raphael@slinckx.net>
 """
+from __future__ import print_function
 import os
 import sys
+from six import text_type
 from optparse import OptionParser
 
 
@@ -39,7 +41,7 @@ _server_name = None
 
 def fail(msg, code):
     """Bail out with an error message."""
-    print >> sys.stderr, 'ERROR: %s' % msg
+    print('ERROR: %s' % msg, file=sys.stderr)
     sys.exit(code)
 
 
@@ -83,14 +85,14 @@ def load_default_settings():
 def make_utf8(text, encoding):
     """Convert a text to UTF-8, brute-force."""
     try:
-        u = unicode(text, 'utf-8')
+        u = text_type(text, 'utf-8')
         uenc = 'utf-8'
     except UnicodeError:
         try:
-            u = unicode(text, encoding)
+            u = text_type(text, encoding)
             uenc = 'utf-8'
         except UnicodeError:
-            u = unicode(text, 'iso-8859-15', 'ignore')
+            u = text_type(text, 'iso-8859-15', 'ignore')
             uenc = 'iso-8859-15'
     try:
         import chardet
@@ -99,7 +101,7 @@ def make_utf8(text, encoding):
     d = chardet.detect(text)
     if d['encoding'] == uenc:
         return u.encode('utf-8')
-    return unicode(text, d['encoding'], 'ignore').encode('utf-8')
+    return text_type(text, d['encoding'], 'ignore').encode('utf-8')
 
 
 def get_xmlrpc_service():
@@ -110,7 +112,7 @@ def get_xmlrpc_service():
         try:
             _xmlrpc_service = xmlrpclib.ServerProxy(_server_name + 'xmlrpc/',
                                                     allow_none=True)
-        except Exception, err:
+        except Exception as err:
             fail('Could not connect to Pastebin: %s' % err, -1)
     return _xmlrpc_service
 
@@ -184,10 +186,12 @@ def print_languages():
     """Print a list of all supported languages, with description."""
     xmlrpc = get_xmlrpc_service()
     languages = xmlrpc.pastes.getLanguages().items()
-    languages.sort(lambda a, b: cmp(a[1].lower(), b[1].lower()))
-    print 'Supported Languages:'
+    languages.sort(
+        lambda a, b: (a[1].lower() > b[1].lower())-(a[1].lower() < b[1].lower())
+    )
+    print('Supported Languages:')
     for alias, name in languages:
-        print '    %-30s%s' % (alias, name)
+        print('    %-30s%s' % (alias, name))
 
 
 def download_paste(uid):
@@ -196,7 +200,7 @@ def download_paste(uid):
     paste = xmlrpc.pastes.getPaste(uid)
     if not paste:
         fail('Paste "%s" does not exist.' % uid, 5)
-    print paste['code'].encode('utf-8')
+    print(paste['code'].encode('utf-8'))
 
 
 def create_paste(code, language, filename, mimetype, private):
@@ -221,7 +225,7 @@ def compile_paste(filenames, langopt):
     lang = langopt or ''
     if not filenames:
         data = read_file(sys.stdin)
-        print 'Pasting...'
+        print('Pasting...')
         if not langopt:
             mime = get_mimetype(data, '') or ''
         fname = ''
@@ -292,7 +296,7 @@ def main():
     # special modes of operation:
     # - paste script version
     if opts.version:
-        print '%s: version %s' % (SCRIPT_NAME, VERSION)
+        print('%s: version %s' % (SCRIPT_NAME, VERSION))
         sys.exit()
     # - print list of languages
     elif opts.languages:
@@ -310,7 +314,7 @@ def main():
     # load file(s)
     try:
         data, language, filename, mimetype = compile_paste(args, opts.language)
-    except Exception, err:
+    except Exception as err:
         fail('Error while reading the file(s): %s' % err, 2)
     if not data:
         fail('Aborted, no content to paste.', 4)
@@ -319,7 +323,7 @@ def main():
     code = make_utf8(data, opts.encoding)
     pid = create_paste(code, language, filename, mimetype, opts.private)
     url = '%sshow/%s/' % (_server_name, pid)
-    print url
+    print(url)
     if opts.open_browser:
         open_webbrowser(url)
     if opts.clipboard:

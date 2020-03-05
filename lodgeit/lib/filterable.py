@@ -8,6 +8,8 @@
     :copyright: 2008 by Christopher Grebs.
     :license: BSD.
 """
+import six
+
 from lodgeit.i18n import _
 from lodgeit.utils import render_template
 
@@ -71,7 +73,7 @@ class Filterable(object):
         return ret
 
     def get_objects(self):
-        for field, filter in self.filters.iteritems():
+        for field, filter in six.iteritems(self.filters):
             action, value = filter
             if value:
                 func = ACTIONS_MAP[action]
