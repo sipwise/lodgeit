@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_55ade1e6",
+        "filename": "lodgeit/lib/captcha.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4146
+      },
+      "writtenOn": "2020-03-05T18:27:45Z",
+      "side": 1,
+      "message": "Note range is valid in python2 as well.",
+      "revId": "9b854e7729730f3310620c0c9e0570dd8a9994c4",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_3575c564",
+        "filename": "scripts/lodgeit.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 4146
+      },
+      "writtenOn": "2020-03-05T18:27:45Z",
+      "side": 1,
+      "message": "Python3 list.sort accepts a key function that should have as input a single value. There is apparently functools.cmp_to_key to aid in this, however I think a simpler version would be:\n\n  languages.sort(key\u003dlambda a: a[1].lower)\n\nPython2 accepts a key option on its sort function too, its just not the first arg (old cmp style is).",
+      "revId": "9b854e7729730f3310620c0c9e0570dd8a9994c4",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_f56acd7e",
+        "filename": "tox.ini",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4146
+      },
+      "writtenOn": "2020-03-05T18:27:45Z",
+      "side": 1,
+      "message": "I would add a basepython \u003d python3 here simply because without it commands like pep8 will default to using whichever python tox is installed under.",
+      "revId": "9b854e7729730f3310620c0c9e0570dd8a9994c4",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
