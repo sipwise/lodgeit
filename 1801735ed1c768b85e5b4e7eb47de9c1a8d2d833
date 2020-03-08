@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_199ea4b8",
+        "filename": ".zuul.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2020-03-08T20:48:08Z",
+      "side": 1,
+      "message": "Turns out if it\u0027s the only thing involved, we don\u0027t need to run one explicity - the build job is also its own buildset registry.\n\n#notaminusone - but if you respin, you can remove this.",
+      "revId": "1801735ed1c768b85e5b4e7eb47de9c1a8d2d833",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_39a120f9",
+        "filename": ".zuul.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2020-03-08T20:48:08Z",
+      "side": 1,
+      "message": "And this one",
+      "revId": "1801735ed1c768b85e5b4e7eb47de9c1a8d2d833",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
