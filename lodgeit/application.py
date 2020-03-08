@@ -75,8 +75,14 @@ class LodgeIt(object):
                                self.cleanup_callbacks)
 
 
-def make_app(dburi, secret_key, debug=False, shell=False):
+def make_app(dburi=None, secret_key=None, debug=False, shell=False):
     """Apply the used middlewares and create the application."""
+
+    if dburi is None:
+        dburi = os.getenv('LODGEIT_DBURI')
+    if secret_key is None:
+        secret_key = os.getenv('LODGEIT_SECRET_KEY')
+
     static_path = os.path.join(os.path.dirname(__file__), 'static')
     app = LodgeIt(dburi, secret_key)
     if debug:

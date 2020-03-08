@@ -8,3 +8,4 @@ Babel
 pillow
 pytz
 MarkupSafe
+uwsgi
