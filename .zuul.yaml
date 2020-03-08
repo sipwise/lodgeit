@@ -1,11 +1,74 @@
+- secret:
+    name: lodgeit-opendev-dockerhub
+    data:
+      username: opendevzuul
+      password: !encrypted/pkcs1-oaep
+        - D6Z2bpBW0RSHMeqZP1PwjlJA8nLIac0BPKNMefelwHXeqD1w0pHTQ4W7MNvbmpmqxO0YG
+          vWOS5wxCuUJ37gELGfBRvWwvbnrfzhlh+nHqfZ2rh/8wYJuMV4HZOEnjJ5gHQSGldRW4g
+          +woxkkcJ/GzakyITAm/FhUiyMB6G3E6NLo8YDm/WTKsEtRmUtSbQMkGaZLfXY1QwCA9pN
+          7lYLr6Pibd2PQzCQWq1CAr4BJGdc10r/LWxyWC4EphF4RxsKLWNEktkT+ZfP2K9+tNtrL
+          /nkwdc9IUjSqWFa8JUQy0GREghpOW7GgMthoqvADgpdxOoqIhyC4gpFfciC2jXbsMC0pV
+          3kkCGQbv29LJ/gJ4QcqJHZ00OvI76XrE5CwQ7MFu+KIcTdoQtorIMOOx9ey/5UybJYlh9
+          nHnZP6UwMPQuxkbdJhlwhUnGKXaiJWGs97gHWVwcrThT/IEEKfFata2/Wn4dXlSr6u4t/
+          Xt34+eZOfqaGGdOjo/+U3IrxeMIM+KZl30/30vNBM95TxNxZ9JKR7XmOFwUWWxNc7LQng
+          soT47t74JaCpeUeX8otlpSKz9N+rFWkphrFai3qakKgqxpjyZ7k12veNhdrcqMLVrsOSI
+          EKTCnKphRQKSiMe0WjiaIvXNEGeIXMu6PlCIYvexzlrlUJJfc95Er+OlY7vvHg=
+
+- job:
+    name: lodgeit-build-opendev-image
+    parent: opendev-build-docker-image
+    dependencies: opendev-buildset-registry
+    description: Build OpenDev Docker images for LodgeIt
+    requires:
+      - python-base-container-image
+      - python-builder-container-image
+    provides: lodgeit-container-image
+    vars: &lodgeit_opendev_image_vars
+      zuul_work_dir: src/opendev.org/opendev/lodgeit
+      docker_images:
+        - context: .
+          repository: opendevorg/lodgeit
+          target: lodgeit
+
+- job:
+    name: lodgeit-upload-opendev-image
+    parent: opendev-upload-docker-image
+    description: Build OpenDev LodgeIt Docker images and upload to Docker Hub.
+    requires:
+      - python-base-container-image
+      - python-builder-container-image
+    provides: lodgeit-container-image
+    vars: *lodgeit_opendev_image_vars
+    secrets:
+      - name: docker_credentials
+        secret: lodgeit-opendev-dockerhub
+        pass-to-parent: true
+
+- job:
+    name: lodgeit-promote-opendev-image
+    parent: opendev-promote-docker-image
+    description: Promote previously uploaded LodgeIt Docker images.
+    vars: *lodgeit_opendev_image_vars
+    secrets:
+      - name: docker_credentials
+        secret: lodgeit-opendev-dockerhub
+        pass-to-parent: true
+
 - project:
     check:
       jobs:
         - tox-pep8
         - tox-py27
         - tox-py36
+        - opendev-buildset-registry
+        - lodgeit-build-opendev-image
     gate:
       jobs:
         - tox-pep8
         - tox-py27
         - tox-py36
+        - opendev-buildset-registry
+        - lodgeit-upload-opendev-image
+    promote:
+      jobs:
+        - lodgeit-promote-opendev-image
