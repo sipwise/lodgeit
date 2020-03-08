@@ -2,9 +2,11 @@ six
 Jinja2
 Werkzeug<0.16
 Pygments
-SQLAlchemy==0.9.7
+SQLAlchemy
+PyMySQL
 simplejson
 Babel
 pillow
 pytz
 MarkupSafe
+uwsgi
