@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_82b0d8de",
+        "filename": ".zuul.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5263
+      },
+      "writtenOn": "2020-03-09T15:28:53Z",
+      "side": 1,
+      "message": "This matches the secret I encrypted and provided to Mohammed for the opendev/lodgeit project.",
+      "revId": "54727daa85d64d109affcc4bfbdf22defe5edc8f",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_a2b394e8",
+        "filename": "setup.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5263
+      },
+      "writtenOn": "2020-03-09T15:28:53Z",
+      "side": 1,
+      "message": "Wikipedia seems to indicate that \"pastebin\" is a genericized term for this sort of service, and I can\u0027t find any indication in pastebin.com\u0027s site or the lordelph/pastebin source on GitHub suggesting that they hold a trademark on it, so I\u0027m guessing it\u0027s safe to use in the package summary.",
+      "revId": "54727daa85d64d109affcc4bfbdf22defe5edc8f",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
