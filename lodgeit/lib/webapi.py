@@ -98,6 +98,21 @@ def pastes_get_paste(paste_id):
         return paste.to_xmlrpc_dict()
 
 
+@exported('pastes.deletePaste')
+def pastes_delete_paste(paste_id):
+    """Delete a paste by a given paste id."""
+    Paste.delete(paste_id)
+    return "deleted"
+
+@exported('pastes.byDatePaste')
+def pastes_get_by_date(delta, start, end):
+    """Shows pastes for the provided timeperiod"""
+    pastes = [
+        x.to_xmlrpc_dict()
+        for x in Paste.find_by_date(delta=delta, start=start, end=end)
+    ]
+    return pastes
+
 @exported('pastes.getDiff')
 def pastes_get_diff(old_id, new_id):
     """Compare the two pastes and return an unified diff."""

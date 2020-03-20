@@ -190,6 +190,23 @@ def print_languages():
     for alias, name in languages:
         print('    %-30s%s' % (alias, name))
 
+def delete_paste(uid):
+    """Delete a paste given by ID."""
+    xmlrpc = get_xmlrpc_service()
+    xmlrpc.pastes.deletePaste(uid)
+
+def get_delta_pastes(delta):
+    """Get pastes for the last N days"""
+    xmlrpc = get_xmlrpc_service()
+    pastes = xmlrpc.pastes.byDatePaste(delta)
+    for paste in pastes:
+        print("{0}".format(paste['paste_id']))
+
+def delete_pastes_date(start=str(), end=str()):
+    xmlrpc = get_xmlrpc_service()
+    pastes = xmlrpc.pastes.byDatePaste(str(), start, end)
+    for paste in pastes:
+        delete_paste(paste['paste_id'])
 
 def download_paste(uid):
     """Download a paste given by ID."""
@@ -280,6 +297,14 @@ def main():
                       help="Don't copy the url into the clipboard")
     parser.add_option('--download', metavar='UID',
                       help='Download a given paste')
+    parser.add_option('--delete', metavar='UID',
+                      help='Delete a given paste')
+    parser.add_option('--delete_to', metavar='end',
+                      help='Delete all pastes until `delta` days ago')
+    parser.add_option('--delete_from', metavar='start',
+                      help='Delete all pastes until `delta` days ago')
+    parser.add_option('--timedelta', metavar='delta',
+                      help='Get pastes for the last N days')
     parser.add_option('-s', '--server', default=settings['server_name'],
                       dest='server_name',
                       help="Specify the pastebin to send data")
@@ -302,6 +327,23 @@ def main():
     # - download Paste
     elif opts.download:
         download_paste(opts.download)
+        sys.exit()
+    # - delete Paste
+    elif opts.delete:
+        if opts.delete_to and not opts.delete_from:
+            delete_pastes_date(end=opts.delete_to)
+            sys.exit()
+        elif not opts.delete_to and opts.delete_from:
+            delete_pastes_date(start=opts.delete_from)
+            sys.exit()
+        elif opts.delete_to and opts.delete_from:
+            delete_pastes_date(start=opts.delete_from, end=opts.delete_to)
+            sys.exit()
+        else:
+            delete_paste(opts.delete)
+            sys.exit()
+    elif opts.timedelta:
+        get_delta_pastes(opts.timedelta)
         sys.exit()
 
     # check language if given

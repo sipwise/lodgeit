@@ -9,7 +9,8 @@
 """
 import time
 import difflib
-from datetime import datetime
+import re
+from datetime import datetime, timedelta
 from six import string_types
 from werkzeug import cached_property
 
@@ -61,6 +62,37 @@ class Paste(db.Model):
         else:
             query = Paste.query.filter_by(paste_id=int(identifier))
         return query.first()
+
+    @staticmethod
+    def delete(identifier):
+        """Delete the paste with identifier. Private pastes must be loaded
+        with their unique hash and public with the paste id.
+        """
+        if isinstance(identifier, string_types) and not identifier.isdigit():
+            query = Paste.query.filter_by(private_id=identifier)
+        else:
+            query = Paste.query.filter_by(paste_id=int(identifier))
+        query.delete()
+        db.session.commit()
+
+    @staticmethod
+    def find_by_date(start=str(), end=str(), delta=str()):
+        if not start and not end:
+            if not delta:
+                delta = "1d"
+            delta_type = re.search(r'([0-9]{1,3})([d,h])', delta)
+            if delta_type.group(2) == 'h':
+                delta_args = {'hours': int(delta_type.group(1))}
+            elif delta_type.group(2) == 'd':
+                delta_args = {'days': int(delta_type.group(1))}
+            end = datetime.now()
+            start = end - timedelta(delta_args)
+        if not start and end:
+            start = datetime.min
+        if start and not end:
+            end = datetime.now()
+        return Paste.query.filter(Paste.pub_date.between(start, end)).filter_by(
+            private_id=None)
 
     @staticmethod
     def find_all():
