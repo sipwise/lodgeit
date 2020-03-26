@@ -1,7 +1,8 @@
 six
 Jinja2
 Werkzeug<0.16
-Pygments
+Pygments<2.60;python_version<'3'
+Pygments;python_version>='3'
 SQLAlchemy
 PyMySQL
 simplejson
