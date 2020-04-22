@@ -17,15 +17,11 @@ FROM opendevorg/python-builder:3.7 as builder
 COPY . /tmp/src
 RUN assemble
 
-FROM opendevorg/python-base:3.7 as lodgeit
+FROM opendevorg/uwsgi-base:3.7 as lodgeit
 COPY --from=builder /output/ /output
 RUN /output/install-from-bindep
 
-USER nobody
 EXPOSE 9000
 ENV LODGEIT_DBURI sqlite:////tmp/lodgeit.db
 ENV LODGEIT_SECRET_KEY changeMe
-CMD ["uwsgi", "--master", \
-              "--processes", "4", \
-              "--http-socket", "0.0.0.0:9000", \
-              "--wsgi-file", "/usr/local/bin/lodgeit-wsgi"]
+ENV UWSGI_HTTP_SOCKET=:9000 UWSGI_WSGI_FILE=/usr/local/bin/lodgeit-wsgi
