@@ -19,8 +19,7 @@
     parent: opendev-build-docker-image
     description: Build OpenDev Docker images for LodgeIt
     requires:
-      - python-base-3.7-container-image
-      - python-builder-3.7-container-image
+      - uwsgi-base-3.7-container-image
     provides: lodgeit-container-image
     vars: &lodgeit_opendev_image_vars
       zuul_work_dir: src/opendev.org/opendev/lodgeit
@@ -34,8 +33,7 @@
     parent: opendev-upload-docker-image
     description: Build OpenDev LodgeIt Docker images and upload to Docker Hub.
     requires:
-      - python-base-3.7-container-image
-      - python-builder-3.7-container-image
+      - uwsgi-base-3.7-container-image
     provides: lodgeit-container-image
     vars: *lodgeit_opendev_image_vars
     secrets:
