@@ -9,7 +9,7 @@
 """
 import re
 import time
-from cgi import escape
+from html import escape
 try:
     all
 except NameError:
