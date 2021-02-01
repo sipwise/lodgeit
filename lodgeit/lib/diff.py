@@ -58,18 +58,18 @@ class DiffRenderer(object):
             end -= 1
         end += 1
         if start or end:
-            def do(l):
-                last = end + len(l['line'])
-                if l['action'] == 'add':
+            def do(iterline):
+                last = end + len(iterline['line'])
+                if iterline['action'] == 'add':
                     tag = 'ins'
                 else:
                     tag = 'del'
-                l['line'] = u'%s<%s>%s</%s>%s' % (
-                    l['line'][:start],
+                iterline['line'] = u'%s<%s>%s</%s>%s' % (
+                    iterline['line'][:start],
                     tag,
-                    l['line'][start:last],
+                    iterline['line'][start:last],
                     tag,
-                    l['line'][last:]
+                    iterline['line'][last:]
                 )
             do(line)
             do(next)
