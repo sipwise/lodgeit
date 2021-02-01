@@ -35,7 +35,12 @@ def _get_pygments_lexers(add_empty=True):
     if add_empty:
         r.append(('', ''),)
     for lexer in get_all_lexers():
-        r.append((lexer[1][0], _(lexer[0])),)
+        try:
+            r.append((lexer[1][0], _(lexer[0])),)
+        except IndexError:
+            # Skip "deprecated" lexer entries, like this in Pygments 2.7.3:
+            # https://github.com/pygments/pygments/commit/5ee1754
+            continue
     return r
 
 
