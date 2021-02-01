@@ -59,12 +59,14 @@
         - tox-pep8
         - tox-py27
         - tox-py36
+        - tox-py38
         - lodgeit-build-opendev-image
     gate:
       jobs:
         - tox-pep8
         - tox-py27
         - tox-py36
+        - tox-py38
         - lodgeit-upload-opendev-image
     promote:
       jobs:
