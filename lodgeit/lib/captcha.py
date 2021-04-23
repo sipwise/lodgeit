@@ -46,10 +46,8 @@ def calculate_hash(solution, secret_key=None):
     """Calculate the hash."""
     if secret_key is None:
         secret_key = local.application.secret_key
-    return sha1('%s|%s' % (
-        secret_key,
-        solution.encode('utf-8')
-    )).hexdigest()
+    c_hash = '%s|%s' % (secret_key, solution.encode('utf-8'))
+    return sha1(c_hash.encode('utf-8')).hexdigest()
 
 
 def generate_word():
@@ -284,11 +282,11 @@ class GridBackground(Layer):
 
     def render(self, image):
         draw = ImageDraw.Draw(image)
-        for i in xrange(image.size[0] / self.size + 1):
+        for i in xrange(int(image.size[0] / self.size + 1)):
             draw.line((i * self.size + self.offset[0], 0,
                        i * self.size + self.offset[0], image.size[1]),
                       fill=self.color)
-        for i in xrange(image.size[0] / self.size + 1):
+        for i in xrange(int(image.size[0] / self.size + 1)):
             draw.line((0, i * self.size + self.offset[1],
                        image.size[0], i * self.size+self.offset[1]),
                       fill=self.color)
@@ -308,7 +306,8 @@ class SolidColor(Layer):
             self.bg = 'light'
 
     def render(self, image):
-        image.paste(self.color)
+        box = (100, 100, 300, 300)
+        image.paste(self.color, box)
         return image
 
 
@@ -362,8 +361,8 @@ class WarpBase(Layer):
 
     def render(self, image):
         r = self.resolution
-        x_points = image.size[0] / r + 2
-        y_points = image.size[1] / r + 2
+        x_points = int(image.size[0] / r + 2)
+        y_points = int(image.size[1] / r + 2)
         f = self.get_transform(image)
 
         # Create a list of arrays with transformed points
