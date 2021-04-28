@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b178c2fe_27618059",
+        "filename": "lodgeit/lib/captcha.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 20676
+      },
+      "writtenOn": "2021-04-28T13:20:30Z",
+      "side": 1,
+      "message": "About the commit message, I agree, I miss the point.\nI changed that due getting \"TypeError: Unicode-objects must be encoded before hashing\".",
+      "parentUuid": "b75decbe_bfcc1bd0",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "3aca000b80d1e51c6339c2195594e79923f422fa",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3f540d4_f2d696ea",
         "filename": "lodgeit/lib/captcha.py",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2021-04-28T12:56:23Z",
       "side": 1,
       "message": "IMO the more pythonic solution would be to use \"//\" instead of \"/\", that directly calculates the integer part of the quotient.",
+      "range": {
+        "startLine": 285,
+        "startChar": 42,
+        "endLine": 285,
+        "endChar": 43
+      },
+      "revId": "3aca000b80d1e51c6339c2195594e79923f422fa",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e719a9f1_114c4eb6",
+        "filename": "lodgeit/lib/captcha.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 20676
+      },
+      "writtenOn": "2021-04-28T13:20:30Z",
+      "side": 1,
+      "message": "both ways will work. Why not to use simply one?",
+      "parentUuid": "d3f540d4_f2d696ea",
       "range": {
         "startLine": 285,
         "startChar": 42,
