@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0149b421_6d0ef4b0",
+        "filename": "lodgeit/lib/diff.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 20676
+      },
+      "writtenOn": "2021-05-12T09:40:54Z",
+      "side": 1,
+      "message": "I guess you need to add:\n  try:\n      from html import escape\n  except ImportError:\n      from cgi import escape\n\neven adding into the requirements.txt\n\n  html;python_version\u003c\u00273\u0027\n\ndoes not work.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "db893e8a1f8d45abdce3f7ddb3df67c7115f2a6e",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": true
+    }
+  ]
+}
