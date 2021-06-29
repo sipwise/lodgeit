@@ -18,7 +18,7 @@
   <body>
     <div class="page">
       <div id="header">
-        <h1>Lodge It</h1>
+        <h1>{% if title_override %} {{ title_override }} {% else %} Lodge It {% endif %}</h1>
       </div>
       <ul id="navigation">
       {%- for href, id, caption in [

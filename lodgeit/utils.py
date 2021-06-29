@@ -8,6 +8,7 @@
     :license: BSD
 """
 import base64
+import os
 import re
 import time
 from os import path
@@ -45,6 +46,9 @@ def url_for(endpoint, external=False, **values):
 
 
 jinja_environment.globals['url_for'] = url_for
+if os.environ.get('LODGEIT_TITLE_OVERRIDE'):
+    jinja_environment.globals['title_override'] = \
+        os.environ.get('LODGEIT_TITLE_OVERRIDE')
 
 
 def generate_user_hash():
