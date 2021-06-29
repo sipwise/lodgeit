@@ -13,13 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM opendevorg/python-builder:3.7 as builder
+FROM opendevorg/python-builder:3.8 as builder
 COPY . /tmp/src
 RUN assemble
 
-FROM opendevorg/uwsgi-base:3.7 as lodgeit
+FROM opendevorg/uwsgi-base:3.8 as lodgeit
 COPY --from=builder /output/ /output
 RUN /output/install-from-bindep
+
+# Install mariadb connector for use by sqlalchmey if desired
+RUN apt-get update \
+  && apt-get install -y libmariadb3 libmariadb-dev \
+  && pip install mariadb \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 9000
 ENV LODGEIT_DBURI sqlite:////tmp/lodgeit.db
