@@ -13,11 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM opendevorg/python-builder:3.7 as builder
+FROM opendevorg/python-builder:3.8 as builder
 COPY . /tmp/src
 RUN assemble
 
-FROM opendevorg/uwsgi-base:3.7 as lodgeit
+# Install mariadb connector for use by sqlalchmey
+RUN apt-get install -y libmariadb3 libmariadb-dev \
+  && assemble mariadb
+
+FROM opendevorg/uwsgi-base:3.8 as lodgeit
 COPY --from=builder /output/ /output
 RUN /output/install-from-bindep
 
