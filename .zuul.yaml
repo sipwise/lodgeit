@@ -56,13 +56,15 @@
       jobs:
         - tox-pep8
         - tox-py27
-        - tox-py36
+        - tox-py36:
+            nodeset: ubuntu-bionic
         - lodgeit-build-opendev-image
     gate:
       jobs:
         - tox-pep8
         - tox-py27
-        - tox-py36
+        - tox-py36:
+            nodeset: ubuntu-bionic
         - lodgeit-upload-opendev-image
     promote:
       jobs:
