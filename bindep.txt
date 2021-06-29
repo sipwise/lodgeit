@@ -1,2 +1,4 @@
 gcc [compile]
 libc6-dev [compile]
+libmariadb-dev [compile platform:dpkg !platform:ubuntu-xenial]
+libmariadb3 [platform:dpkg !platform:ubuntu-xenial]
