@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef26ec0a_1c74ca1a",
+        "filename": "manage.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7118
+      },
+      "writtenOn": "2021-06-29T08:44:01Z",
+      "side": 1,
+      "message": "is this boilerplate copied from somewhere or something?  can you explain the ipython use?",
+      "revId": "239ff932956ed528e06d39d5d3b34254624189a1",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": true
+    }
+  ]
+}
