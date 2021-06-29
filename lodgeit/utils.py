@@ -8,6 +8,7 @@
     :license: BSD
 """
 import base64
+import os
 import re
 import time
 from os import path
@@ -45,6 +46,8 @@ def url_for(endpoint, external=False, **values):
 
 
 jinja_environment.globals['url_for'] = url_for
+jinja_environment.globals['title'] = \
+    os.getenv('LODGEIT_TITLE_OVERRIDE', 'Lodge It')
 
 
 def generate_user_hash():
