@@ -12,6 +12,8 @@ from datetime import datetime, timedelta
 from werkzeug import SharedDataMiddleware, ClosingIterator
 from werkzeug.exceptions import HTTPException, NotFound
 from sqlalchemy import create_engine
+from sqlalchemy.exc import OperationalError
+from time import sleep
 from lodgeit import i18n
 from lodgeit.local import ctx, _local_manager
 from lodgeit.urls import urlmap
@@ -31,7 +33,18 @@ class LodgeIt(object):
         self.engine = engine = create_engine(
             dburi, convert_unicode=True, pool_recycle=pool_recycle)
         db.metadata.bind = engine
-        db.metadata.create_all(engine, [Paste.__table__])
+
+        retries = os.environ.get('LODGEIT_DB_CREATE_RETRIES', 1)
+        retry_count = 0
+        while retry_count < retries:
+            try:
+                db.metadata.create_all(engine, [Paste.__table__])
+                continue
+            except OperationalError as e:
+                if retry_count < retries:
+                    raise
+                retry_count = retry_count + 1
+                time.sleep(10)
 
         #: jinja_environment update
         jinja_environment.globals.update({

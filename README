@@ -64,3 +64,12 @@ Now start the development server::
     python manage.py runserver
 
 Enjoy!
+
+Environment Variables
+=====================
+
+LODGEIT_DB_CREATE_RETRIES: 1
+  If using a peer container that may take some time to initalise,
+  set this to a higher number to retry initial connections.  Each
+  retry will pause for 10 seconds before trying again.  Will raise
+  error if the retries are exceeded.
