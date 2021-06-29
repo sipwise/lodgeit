@@ -15,7 +15,11 @@
 
 FROM opendevorg/python-builder:3.7 as builder
 COPY . /tmp/src
-RUN assemble
+RUN apt-get update \
+  && apt-get install -y libmariadb3 libmariadb-dev \
+  && echo "mariadb" >> /tmp/src/requirements.txt \
+  && assemble \
+  && echo "libmariadb3" >> /output/bindep/run.txt
 
 FROM opendevorg/uwsgi-base:3.7 as lodgeit
 COPY --from=builder /output/ /output
