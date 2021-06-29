@@ -5,6 +5,7 @@ Pygments<2.6;python_version<'3'
 Pygments;python_version>='3'
 SQLAlchemy
 PyMySQL
+mariadb
 simplejson
 Babel
 pillow

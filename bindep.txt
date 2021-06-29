@@ -1,2 +1,4 @@
 gcc [compile]
 libc6-dev [compile]
+libmariadb-dev [compile]
+libmariadb3
