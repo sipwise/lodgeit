@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04cdb8d6_7b20662d",
+        "filename": "lodgeit/utils.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 28619
+      },
+      "writtenOn": "2021-06-29T09:16:05Z",
+      "side": 1,
+      "message": "Can\u0027t we just do:\n\n  jinja_environment.globals[\u0027title\u0027] \u003d \\\n        os.getenv(\u0027LODGEIT_TITLE_OVERRIDE\u0027, \u0027Lodge It\u0027)\n\n\n`os.getenv` just used in other places like https://opendev.org/opendev/lodgeit/src/branch/master/lodgeit/application.py#L83 so better to be consistent?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "0e8dc3f53a58fcef8f6f6066f86e31c64ae43ead",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "176c2868_f7ea2ea2",
+        "filename": "lodgeit/views/layout.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 28619
+      },
+      "writtenOn": "2021-06-29T09:16:05Z",
+      "side": 1,
+      "message": "{{ title }}",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 88
+      },
+      "revId": "0e8dc3f53a58fcef8f6f6066f86e31c64ae43ead",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": true
+    }
+  ]
+}
