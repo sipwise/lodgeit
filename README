@@ -64,3 +64,9 @@ Now start the development server::
     python manage.py runserver
 
 Enjoy!
+
+Environment Settings
+====================
+
+LODGEIT_TITLE_OVERRIDE : <string>
+  Arbitrary string to override the main heading for site customisation
