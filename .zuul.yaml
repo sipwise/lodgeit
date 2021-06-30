@@ -18,6 +18,7 @@
     name: lodgeit-build-opendev-image
     parent: opendev-build-docker-image
     description: Build OpenDev Docker images for LodgeIt
+    dependencies: opendev-buildset-registry
     requires:
       - uwsgi-base-3.7-container-image
     provides: lodgeit-container-image
@@ -32,6 +33,7 @@
     name: lodgeit-upload-opendev-image
     parent: opendev-upload-docker-image
     description: Build OpenDev LodgeIt Docker images and upload to Docker Hub.
+    dependencies: opendev-buildset-registry
     requires:
       - uwsgi-base-3.7-container-image
     provides: lodgeit-container-image
@@ -59,6 +61,7 @@
         - tox-py36:
             nodeset: ubuntu-bionic
         - tox-py38
+        - opendev-buildset-registry
         - lodgeit-build-opendev-image
     gate:
       jobs:
@@ -67,6 +70,7 @@
         - tox-py36:
             nodeset: ubuntu-bionic
         - tox-py38
+        - opendev-buildset-registry
         - lodgeit-upload-opendev-image
     promote:
       jobs:
