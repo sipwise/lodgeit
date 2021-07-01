@@ -33,6 +33,24 @@
       "revId": "04da41ceda7ad117f1dd229c04aeaf214237c9b1",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0edb0cd8_d52a29b5",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 28619
+      },
+      "writtenOn": "2021-07-01T13:24:19Z",
+      "side": 1,
+      "message": "hm, for some reason I thought that running tox-py38 job would require to have py38 explicitly stated in envlist",
+      "parentUuid": "9c97ef00_6c953960",
+      "revId": "04da41ceda7ad117f1dd229c04aeaf214237c9b1",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
     }
   ]
 }
