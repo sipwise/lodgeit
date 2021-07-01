@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfbd098b_9234d54d",
+        "filename": "setup.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5263
+      },
+      "writtenOn": "2021-07-01T12:32:04Z",
+      "side": 1,
+      "message": "We could stand to brush up all the contents of the setup.cfg file to be consistent with ones we\u0027ve updated more recently for other projects like bindep and git-review.",
+      "revId": "04da41ceda7ad117f1dd229c04aeaf214237c9b1",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c97ef00_6c953960",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5263
+      },
+      "writtenOn": "2021-07-01T12:32:04Z",
+      "side": 1,
+      "message": "May as well just make this pep8,py3 and not enumerate. This envlist is exclusively for the benefit of developers running `tox` locally without specifying any environments, and we don\u0027t know what Python 3.x version(s) they\u0027ll have but really only care that they\u0027ll use one.",
+      "revId": "04da41ceda7ad117f1dd229c04aeaf214237c9b1",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
