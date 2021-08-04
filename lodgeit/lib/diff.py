@@ -128,13 +128,13 @@ class DiffRenderer(object):
         lineiter = iter(self.lines)
         files = []
         try:
-            line = lineiter.next()
+            line = next(lineiter)
             while 1:
                 # continue until we found the old file
                 if not line.startswith('--- '):
                     if in_header:
                         header.append(line)
-                    line = lineiter.next()
+                    line = next(lineiter)
                     continue
 
                 if header and all(x.strip() for x in header):
@@ -143,7 +143,7 @@ class DiffRenderer(object):
 
                 in_header = False
                 chunks = []
-                old, new = self._extract_rev(line, lineiter.next())
+                old, new = self._extract_rev(line, next(lineiter))
                 files.append({
                     'is_header':        False,
                     'old_filename':     old[0],
@@ -153,7 +153,7 @@ class DiffRenderer(object):
                     'chunks':           chunks
                 })
 
-                line = lineiter.next()
+                line = next(lineiter)
                 while line:
                     match = self._chunk_re.match(line)
                     if not match:
@@ -169,7 +169,7 @@ class DiffRenderer(object):
                     new_line -= 1
                     old_end += old_line
                     new_end += new_line
-                    line = lineiter.next()
+                    line = next(lineiter)
 
                     while old_line < old_end or new_line < new_end:
                         if line:
@@ -196,7 +196,7 @@ class DiffRenderer(object):
                             'action':       action,
                             'line':         line
                         })
-                        line = lineiter.next()
+                        line = next(lineiter)
 
         except StopIteration:
             pass
@@ -209,9 +209,9 @@ class DiffRenderer(object):
                 lineiter = iter(chunk)
                 try:
                     while True:
-                        line = lineiter.next()
+                        line = next(lineiter)
                         if line['action'] != 'unmod':
-                            nextline = lineiter.next()
+                            nextline = next(lineiter)
                             if nextline['action'] == 'unmod' or \
                                nextline['action'] == line['action']:
                                 continue
