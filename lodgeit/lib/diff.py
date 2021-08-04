@@ -51,15 +51,15 @@ class DiffRenderer(object):
             pass
         return (None, None), (None, None)
 
-    def _highlight_line(self, line, next):
+    def _highlight_line(self, line, nextline):
         """Highlight inline changes in both lines."""
         start = 0
-        limit = min(len(line['line']), len(next['line']))
-        while start < limit and line['line'][start] == next['line'][start]:
+        limit = min(len(line['line']), len(nextline['line']))
+        while start < limit and line['line'][start] == nextline['line'][start]:
             start += 1
         end = -1
         limit -= start
-        while -end <= limit and line['line'][end] == next['line'][end]:
+        while -end <= limit and line['line'][end] == nextline['line'][end]:
             end -= 1
         end += 1
         if start or end:
@@ -77,7 +77,7 @@ class DiffRenderer(object):
                     iterline['line'][last:]
                 )
             do(line)
-            do(next)
+            do(nextline)
 
     def _parse_info(self):
         """Look for custom information preceding the diff."""
