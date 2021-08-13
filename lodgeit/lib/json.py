@@ -42,6 +42,6 @@ class JSONRequestHandler(object):
                 'error':    None
             }
         except Exception as e:
-            response = {'data': None, 'error': str(e).decode('utf-8')}
+            response = {'data': None, 'error': str(e)}
         body = dumps(response, indent=local.request.is_xhr and 2 or 0)
         return Response(body + '\n', mimetype='application/json')
