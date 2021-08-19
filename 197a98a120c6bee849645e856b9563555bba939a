@@ -1,0 +1,9 @@
+Code-Review+2: Clark Boylan <cboylan@sapwetik.org>
+Code-Review+2: Ian Wienand <iwienand@redhat.com>
+Workflow+1: Ian Wienand <iwienand@redhat.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 19 Aug 2021 22:51:52 +0000
+Reviewed-on: https://review.opendev.org/c/opendev/lodgeit/+/804540
+Project: opendev/lodgeit
+Branch: refs/heads/master
