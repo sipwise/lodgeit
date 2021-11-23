@@ -20,7 +20,8 @@
     description: Build OpenDev Docker images for LodgeIt
     dependencies: opendev-buildset-registry
     requires:
-      - uwsgi-base-3.7-container-image
+      - python-builder-3.8-bullseye-container-image
+      - uwsgi-base-3.8-bullseye-container-image
     provides: lodgeit-container-image
     vars: &lodgeit_opendev_image_vars
       zuul_work_dir: src/opendev.org/opendev/lodgeit
@@ -35,7 +36,8 @@
     description: Build OpenDev LodgeIt Docker images and upload to Docker Hub.
     dependencies: opendev-buildset-registry
     requires:
-      - uwsgi-base-3.7-container-image
+      - python-builder-3.8-bullseye-container-image
+      - uwsgi-base-3.8-bullseye-container-image
     provides: lodgeit-container-image
     vars: *lodgeit_opendev_image_vars
     secrets:
