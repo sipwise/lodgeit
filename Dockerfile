@@ -15,11 +15,11 @@
 
 # Thu Dec  9 23:48:42 UTC 2021 Rebuild Timestamp
 
-FROM opendevorg/python-builder:3.8-bullseye as builder
+FROM opendevorg/python-builder:3.9-bullseye as builder
 COPY . /tmp/src
 RUN assemble
 
-FROM opendevorg/uwsgi-base:3.8-bullseye as lodgeit
+FROM opendevorg/uwsgi-base:3.9-bullseye as lodgeit
 COPY --from=builder /output/ /output
 RUN /output/install-from-bindep
 
