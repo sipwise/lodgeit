@@ -1,0 +1,9 @@
+Code-Review+2: Dmitriy Rabotyagov <noonedeadpunk@ya.ru>
+Code-Review+2: Jeremy Stanley <fungi@yuggoth.org>
+Workflow+1: Jeremy Stanley <fungi@yuggoth.org>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 13 Jan 2022 21:03:29 +0000
+Reviewed-on: https://review.opendev.org/c/opendev/lodgeit/+/821340
+Project: opendev/lodgeit
+Branch: refs/heads/master
