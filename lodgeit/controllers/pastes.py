@@ -30,7 +30,10 @@ class PasteController(object):
             language = local.request.session.get('language', 'text')
 
         code = error = ''
-        show_captcha = private = False
+        show_captcha = False
+        # NOTE(ianw): 2022-02-08 : we swapped this to default to
+        # private
+        private = True
         parent = None
         req = local.request
         getform = req.form.get
