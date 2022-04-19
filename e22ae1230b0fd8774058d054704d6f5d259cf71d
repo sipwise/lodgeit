@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b1689ab_2a8b306a",
+        "filename": "lodgeit/views/new_paste.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4146
+      },
+      "writtenOn": "2022-04-19T22:05:49Z",
+      "side": 1,
+      "message": "As noted in the child change we actually care about bytes not characters here. But textarea doesn\u0027t seem to allow us to limit by bytes instead of chars so this is probably good enough then the server can return an error if we got over.",
+      "revId": "e22ae1230b0fd8774058d054704d6f5d259cf71d",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543"
+    }
+  ]
+}
