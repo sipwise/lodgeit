@@ -16,6 +16,23 @@
       "message": "I tested this locally e.g. https://imgur.com/a/DTglsNE",
       "revId": "708516ac989c2f3623051d2199fe2272f052c5bc",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c8b7b2_0fe0a08d",
+        "filename": "lodgeit/controllers/pastes.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 4146
+      },
+      "writtenOn": "2022-04-19T22:05:05Z",
+      "side": 1,
+      "message": "I suspect that code is actually a unicode string that may contain multibyte characters. This len() call will count a multibyte character as a single byte. We should probably encode to utf8 here and check that length instead.",
+      "revId": "708516ac989c2f3623051d2199fe2272f052c5bc",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543"
     }
   ]
 }
