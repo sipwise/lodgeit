@@ -14,6 +14,7 @@
 # limitations under the License.
 
 # Thu Dec  9 23:48:42 UTC 2021 Rebuild Timestamp
+# DNM testing assemble
 
 FROM opendevorg/python-builder:3.8-bullseye as builder
 COPY . /tmp/src
