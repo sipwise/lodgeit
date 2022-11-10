@@ -61,7 +61,8 @@
         - tox-pep8
         - tox-py36:
             nodeset: ubuntu-bionic
-        - tox-py38
+        - tox-py38:
+            nodeset: ubuntu-focal
         - opendev-buildset-registry
         - lodgeit-build-opendev-image
     gate:
@@ -69,7 +70,8 @@
         - tox-pep8
         - tox-py36:
             nodeset: ubuntu-bionic
-        - tox-py38
+        - tox-py38:
+            nodeset: ubuntu-focal
         - opendev-buildset-registry
         - lodgeit-upload-opendev-image
     promote:
