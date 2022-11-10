@@ -59,8 +59,6 @@
     check:
       jobs:
         - tox-pep8
-        - tox-py36:
-            nodeset: ubuntu-bionic
         - tox-py38
         - tox-py310
         - opendev-buildset-registry
@@ -68,8 +66,6 @@
     gate:
       jobs:
         - tox-pep8
-        - tox-py36:
-            nodeset: ubuntu-bionic
         - tox-py38
         - tox-py310
         - opendev-buildset-registry
