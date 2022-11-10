@@ -59,8 +59,6 @@
     check:
       jobs:
         - tox-pep8
-        - tox-py36:
-            nodeset: ubuntu-bionic
         - tox-py38:
             nodeset: ubuntu-focal
         - tox-py310
@@ -69,8 +67,6 @@
     gate:
       jobs:
         - tox-pep8
-        - tox-py36:
-            nodeset: ubuntu-bionic
         - tox-py38:
             nodeset: ubuntu-focal
         - tox-py310
