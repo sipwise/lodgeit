@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d793ef_4e9645ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7118
+      },
+      "writtenOn": "2022-11-11T02:19:31Z",
+      "side": 1,
+      "message": "i\u0027m a little worried about how old some of the dependencies in this are (https://review.opendev.org/c/opendev/lodgeit/+/693378) but ... onwards 😊",
+      "revId": "b4e0cae3a30d9360a240fc6e2b08121c429708bc",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543"
+    }
+  ]
+}
