@@ -1,0 +1,9 @@
+Code-Review+2: Ian Wienand <iwienand@redhat.com>
+Code-Review+2: Jeremy Stanley <fungi@yuggoth.org>
+Workflow+1: Jeremy Stanley <fungi@yuggoth.org>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 16 Nov 2022 00:01:06 +0000
+Reviewed-on: https://review.opendev.org/c/opendev/lodgeit/+/864222
+Project: opendev/lodgeit
+Branch: refs/heads/master
