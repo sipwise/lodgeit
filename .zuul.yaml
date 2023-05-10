@@ -33,7 +33,7 @@
       container_images:
         - context: .
           registry: quay.io
-          repository: opendevorg/lodgeit
+          repository: quay.io/opendevorg/lodgeit
           namespace: opendevorg
           repo_shortname: lodgeit
           repo_description: A lodgeit paste bin image.
