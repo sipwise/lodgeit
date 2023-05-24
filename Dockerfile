@@ -15,11 +15,11 @@
 
 # Thu Dec  9 23:48:42 UTC 2021 Rebuild Timestamp
 
-FROM quay.io/opendevorg/python-builder:3.10-bullseye as builder
+FROM docker.io/opendevorg/python-builder:3.10-bullseye as builder
 COPY . /tmp/src
 RUN assemble
 
-FROM quay.io/opendevorg/uwsgi-base:3.10-bullseye as lodgeit
+FROM docker.io/opendevorg/uwsgi-base:3.10-bullseye as lodgeit
 COPY --from=builder /output/ /output
 RUN /output/install-from-bindep
 

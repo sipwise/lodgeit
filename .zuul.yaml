@@ -1,24 +1,22 @@
 - secret:
-    name: lodgeit-opendev-quayio
+    name: lodgeit-opendev-dockerhub
     data:
-      quay.io:
-        username: opendevorg+lodgeitrobot
-        password: !encrypted/pkcs1-oaep
-          - nF3sJQF22q/j082+CVJCehyOvgKl89uYLzCBkl31+Vkl9GAQOxLaDWSJK22iMCoWyhEQv
-            KH5dC77tSC+iZrupTmGZDeUsdq1Dewtoc/w8wReyCmn1CdDo9At99dX7H1DZN3xTUQ+zd
-            e8L6sFtLCktYVJ8df9cg9JsaytlyiF6NXFzEZmrs9DEBB5gdc5mC/9tcd1bZlb3UtsLZ3
-            EPDsWEgJAcX83dOM5MwaQYqM86wqSwSlRX7LLueFcN6vDRerRg7fp+77qR9D/o01YFxVa
-            S4VjSaotnd5/z7g6ztc9T3qAmsyQ/d58efSERqEyVwmGzmiQPO5DQIZI6WpPrjoTGEoea
-            OF2n779q3ztR3dAINl1SdaAte3B5shR1lGuTk2NwyKc+rz+fMrkKPU7T/lG0exY0YQg02
-            zHb0hmR/9u4Mr8MCEuWSgn1b8487JOaWqIiHThXbcdtKnPBDkqquDB/JHjbNHD2VWJ+7B
-            +OrOOksVVqQR1Y+0x+oB3xh92lYoQEPnJc8QMdtQ9lpHGxeg5Iht+pRUc5fSKR559O4nv
-            TpqskWPhx6I7CbkZuAtf8bDQ8WtuYIDtukjcCgt5kBNg/Hbe/Ib8mv20oUZKOgPmBn+4N
-            mNx1d3DDRyxLJ8BACO3juHJH5U1l/RaVudTjXDz019CiRHwIHe/90ycret5tqU=
-        # No api token because grafyaml won't need to create new repos
+      username: opendevzuul
+      password: !encrypted/pkcs1-oaep
+        - D6Z2bpBW0RSHMeqZP1PwjlJA8nLIac0BPKNMefelwHXeqD1w0pHTQ4W7MNvbmpmqxO0YG
+          vWOS5wxCuUJ37gELGfBRvWwvbnrfzhlh+nHqfZ2rh/8wYJuMV4HZOEnjJ5gHQSGldRW4g
+          +woxkkcJ/GzakyITAm/FhUiyMB6G3E6NLo8YDm/WTKsEtRmUtSbQMkGaZLfXY1QwCA9pN
+          7lYLr6Pibd2PQzCQWq1CAr4BJGdc10r/LWxyWC4EphF4RxsKLWNEktkT+ZfP2K9+tNtrL
+          /nkwdc9IUjSqWFa8JUQy0GREghpOW7GgMthoqvADgpdxOoqIhyC4gpFfciC2jXbsMC0pV
+          3kkCGQbv29LJ/gJ4QcqJHZ00OvI76XrE5CwQ7MFu+KIcTdoQtorIMOOx9ey/5UybJYlh9
+          nHnZP6UwMPQuxkbdJhlwhUnGKXaiJWGs97gHWVwcrThT/IEEKfFata2/Wn4dXlSr6u4t/
+          Xt34+eZOfqaGGdOjo/+U3IrxeMIM+KZl30/30vNBM95TxNxZ9JKR7XmOFwUWWxNc7LQng
+          soT47t74JaCpeUeX8otlpSKz9N+rFWkphrFai3qakKgqxpjyZ7k12veNhdrcqMLVrsOSI
+          EKTCnKphRQKSiMe0WjiaIvXNEGeIXMu6PlCIYvexzlrlUJJfc95Er+OlY7vvHg=
 
 - job:
     name: lodgeit-build-opendev-image
-    parent: opendev-build-container-image
+    parent: opendev-build-docker-image
     description: Build OpenDev Docker images for LodgeIt
     dependencies: opendev-buildset-registry
     requires:
@@ -27,21 +25,14 @@
     provides: lodgeit-container-image
     vars: &lodgeit_opendev_image_vars
       zuul_work_dir: src/opendev.org/opendev/lodgeit
-      promote_container_image_method: intermediate-registry
-      promote_container_image_job: lodgeit-upload-opendev-image
-      container_command: docker
-      container_images:
+      docker_images:
         - context: .
-          registry: quay.io
-          repository: quay.io/opendevorg/lodgeit
-          namespace: opendevorg
-          repo_shortname: lodgeit
-          repo_description: A lodgeit paste bin image.
+          repository: opendevorg/lodgeit
           target: lodgeit
 
 - job:
     name: lodgeit-upload-opendev-image
-    parent: opendev-upload-container-image
+    parent: opendev-upload-docker-image
     description: Build OpenDev LodgeIt Docker images and upload to Docker Hub.
     dependencies: opendev-buildset-registry
     requires:
@@ -50,18 +41,18 @@
     provides: lodgeit-container-image
     vars: *lodgeit_opendev_image_vars
     secrets:
-      - name: container_registry_credentials
-        secret: lodgeit-opendev-quayio
+      - name: docker_credentials
+        secret: lodgeit-opendev-dockerhub
         pass-to-parent: true
 
 - job:
     name: lodgeit-promote-opendev-image
-    parent: opendev-promote-container-image
+    parent: opendev-promote-docker-image
     description: Promote previously uploaded LodgeIt Docker images.
     vars: *lodgeit_opendev_image_vars
     secrets:
-      - name: container_registry_credentials
-        secret: lodgeit-opendev-quayio
+      - name: docker_credentials
+        secret: lodgeit-opendev-dockerhub
         pass-to-parent: true
 
 - project:
