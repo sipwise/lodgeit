@@ -1,0 +1,9 @@
+Code-Review+2: James E. Blair <jim@acmegating.com>
+Verified+2: Zuul
+Code-Review+2: Jeremy Stanley <fungi@yuggoth.org>
+Workflow+1: Clark Boylan <cboylan@sapwetik.org>
+Submitted-by: Zuul
+Submitted-at: Thu, 25 May 2023 22:00:12 +0000
+Reviewed-on: https://review.opendev.org/c/opendev/lodgeit/+/884296
+Project: opendev/lodgeit
+Branch: refs/heads/master
