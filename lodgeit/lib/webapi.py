@@ -42,7 +42,11 @@ def get_public_methods():
         for name, f in six.iteritems(json.funcs):
             if name.startswith('system.') or f.hidden:
                 continue
-            args, varargs, varkw, defaults = inspect.getargspec(f)
+            ret = inspect.getfullargspec(f)
+            (args, varargs, varkw, defaults,
+             # TODO handle modern python arg spec items below this
+             # comment.
+             kwonlyargs, kwonlydefaults, annotations) = ret
             if args and args[0] == 'request':
                 args = args[1:]
             result.append({
