@@ -42,16 +42,17 @@ def get_public_methods():
         for name, f in six.iteritems(json.funcs):
             if name.startswith('system.') or f.hidden:
                 continue
-            args, varargs, varkw, defaults = inspect.getargspec(f)
-            if args and args[0] == 'request':
-                args = args[1:]
+            sig = inspect.signature(f)
+            # parameters is returned as a read only mappingproxy
+            params = sig.parameters.copy()
+            if params and list(params.keys())[0] == 'request':
+                # Throw out the first parameter
+                params.popitem(last=False)
+            sig = sig.replace(parameters=params.values())
             result.append({
-                'name':         name,
-                'doc':          inspect.getdoc(f) or '',
-                'signature':    inspect.formatargspec(
-                    args, varargs, varkw, defaults,
-                    formatvalue=lambda o: '=' + repr(o)
-                )
+                'name':      name,
+                'doc':       inspect.getdoc(f) or '',
+                'signature': str(sig)
             })
         result.sort(key=lambda x: x['name'].lower())
         _public_methods = result
