@@ -62,8 +62,8 @@ STYLES = dict((x, x.title()) for x in get_all_styles())
 
 DEFAULT_STYLE = 'friendly'
 
-_section_marker_re = re.compile(r'^(?<!\\)###\s*(.*?)(?:\[(.+?)\])?\s*$(?m)')
-_escaped_marker = re.compile(r'^\\(?=###)(?m)')
+_section_marker_re = re.compile(r'(?m)^(?<!\\)###\s*(.*?)(?:\[(.+?)\])?\s*$')
+_escaped_marker = re.compile(r'(?m)^\\(?=###)')
 
 
 def highlight(code, language, _preview=False, _linenos=True):
