@@ -7,6 +7,6 @@ SQLAlchemy<2.0.0
 PyMySQL
 simplejson
 Babel
-pillow
+pillow>=9.5
 pytz
 MarkupSafe
