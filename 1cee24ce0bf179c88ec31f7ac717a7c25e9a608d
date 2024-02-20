@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "305cda72_938afbee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4146
+      },
+      "writtenOn": "2024-02-20T21:50:17Z",
+      "side": 1,
+      "message": "I tested this on the setup fungi hacked this into. It may not be perfect (the first captcha I got was not readable) but I think it is an improvement.",
+      "revId": "1cee24ce0bf179c88ec31f7ac717a7c25e9a608d",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543"
+    }
+  ]
+}
