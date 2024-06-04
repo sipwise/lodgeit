@@ -55,14 +55,6 @@ class PasteController(object):
                                   'CAPTCHA solution was incorrect')
                 show_captcha = True
 
-            # NOTE(ianw) 2022-04-19 : this goes into a mysql "text"
-            # field that is 64k
-            paste_max = 64 * 1024
-            code_len = len(code.encode('utf-8'))
-            if code_len > paste_max:
-                error = _('your paste is over the 64k limit (by %d)' %
-                          (code_len - paste_max))
-
             if code and language and not error:
                 paste = Paste(code, language, parent_id, req.user_hash,
                               'private' in req.form)
