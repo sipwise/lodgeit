@@ -61,7 +61,8 @@
         - tox-pep8
         - tox-py38:
             nodeset: ubuntu-focal
-        - tox-py311
+        - tox-py311:
+            nodeset: ubuntu-jammy
         - opendev-buildset-registry
         - lodgeit-build-opendev-image
     gate:
@@ -69,7 +70,8 @@
         - tox-pep8
         - tox-py38:
             nodeset: ubuntu-focal
-        - tox-py311
+        - tox-py311:
+            nodeset: ubuntu-jammy
         - opendev-buildset-registry
         - lodgeit-upload-opendev-image
     promote:
