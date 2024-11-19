@@ -152,8 +152,14 @@ class TextLayer(Layer):
         text_image = Image.new('L', image.size, 0)
         draw = ImageDraw.Draw(text_image)
         text_size = self.font.getbbox(self.text)
-        x = int((image.size[0] - text_size[0]) * self.alignment[0] + 0.5)
-        y = int((image.size[1] - text_size[1]) * self.alignment[1] + 0.5)
+        x = int(
+            (image.size[0] - text_size[2] + text_size[0]) * self.alignment[0]
+            + 0.5
+        )
+        y = int(
+            (image.size[1] - text_size[3] + text_size[1]) * self.alignment[1]
+            + 0.5
+        )
         draw.text((x, y), self.text, font=self.font,
                   fill=255 - self.transparency)
 
