@@ -22,8 +22,8 @@
     description: Build OpenDev Docker images for LodgeIt
     dependencies: opendev-buildset-registry
     requires:
-      - python-builder-3.11-bookworm-container-image
-      - uwsgi-base-3.11-bookworm-container-image
+      - python-builder-3.12-bookworm-container-image
+      - uwsgi-base-3.12-bookworm-container-image
     provides: lodgeit-container-image
     vars: &lodgeit_opendev_image_vars
       zuul_work_dir: src/opendev.org/opendev/lodgeit
@@ -45,8 +45,8 @@
     description: Build OpenDev LodgeIt Docker images and upload to Docker Hub.
     dependencies: opendev-buildset-registry
     requires:
-      - python-builder-3.11-bookworm-container-image
-      - uwsgi-base-3.11-bookworm-container-image
+      - python-builder-3.12-bookworm-container-image
+      - uwsgi-base-3.12-bookworm-container-image
     provides: lodgeit-container-image
     vars: *lodgeit_opendev_image_vars
     secrets:
@@ -68,19 +68,19 @@
     check:
       jobs:
         - tox-pep8
-        - tox-py38:
-            nodeset: ubuntu-focal
         - tox-py311:
             nodeset: ubuntu-jammy
+        - tox-py312:
+            nodeset: ubuntu-noble
         - opendev-buildset-registry
         - lodgeit-build-opendev-image
     gate:
       jobs:
         - tox-pep8
-        - tox-py38:
-            nodeset: ubuntu-focal
         - tox-py311:
             nodeset: ubuntu-jammy
+        - tox-py312:
+            nodeset: ubuntu-noble
         - opendev-buildset-registry
         - lodgeit-upload-opendev-image
     promote:
