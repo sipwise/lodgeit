@@ -29,7 +29,7 @@
       zuul_work_dir: src/opendev.org/opendev/lodgeit
       promote_container_image_method: intermediate-registry
       promote_container_image_job: lodgeit-upload-opendev-image
-      container_command: docker
+      container_command: podman
       container_images:
         - context: .
           registry: quay.io
