@@ -15,11 +15,11 @@
 
 # Thu Dec  9 23:48:42 UTC 2021 Rebuild Timestamp
 
-FROM quay.io/opendevmirror/python-builder:3.12-bookworm as builder
+FROM quay.io/opendevorg/python-builder:3.12-bookworm as builder
 COPY . /tmp/src
 RUN assemble
 
-FROM quay.io/opendevmirror/uwsgi-base:3.12-bookworm as lodgeit
+FROM quay.io/opendevorg/uwsgi-base:3.12-bookworm as lodgeit
 COPY --from=builder /output/ /output
 RUN /output/install-from-bindep
 
