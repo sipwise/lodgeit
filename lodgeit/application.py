@@ -8,8 +8,9 @@
     :license: BSD
 """
 import os
-from datetime import datetime, timedelta
-from werkzeug import SharedDataMiddleware, ClosingIterator
+from datetime import datetime, timedelta, timezone
+from werkzeug.middleware.shared_data import SharedDataMiddleware
+from werkzeug.wsgi import ClosingIterator
 from werkzeug.exceptions import HTTPException, NotFound
 from sqlalchemy import create_engine
 from lodgeit import i18n
@@ -28,9 +29,7 @@ class LodgeIt(object):
         self.secret_key = secret_key
 
         #: bind metadata, create engine and create all tables
-        self.engine = engine = create_engine(
-            dburi, convert_unicode=True, pool_recycle=pool_recycle)
-        db.metadata.bind = engine
+        self.engine = engine = create_engine(dburi, pool_recycle=pool_recycle)
         db.metadata.create_all(engine, [Paste.__table__])
 
         #: jinja_environment update
@@ -67,7 +66,7 @@ class LodgeIt(object):
         except HTTPException as e:
             resp = e.get_response(environ)
         else:
-            expires = datetime.utcnow() + timedelta(days=31)
+            expires = datetime.now(timezone.utc) + timedelta(days=31)
             if request.first_visit or request.session.should_save:
                 request.session.save_cookie(resp, COOKIE_NAME,
                                             expires=expires)

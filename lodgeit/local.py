@@ -7,7 +7,7 @@
     :copyright: 2008 by Christopher Grebs.
     :license: BSD
 """
-from werkzeug import Local, LocalManager, LocalProxy
+from werkzeug.local import Local, LocalManager, LocalProxy
 
 #: context locals
 ctx = Local()

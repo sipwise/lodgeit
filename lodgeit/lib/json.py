@@ -8,7 +8,7 @@
     :license: BSD
 """
 from simplejson import dumps, loads
-from werkzeug import Response
+from werkzeug.wrappers import Response
 from lodgeit import local
 
 
@@ -43,5 +43,7 @@ class JSONRequestHandler(object):
             }
         except Exception as e:
             response = {'data': None, 'error': str(e)}
-        body = dumps(response, indent=local.request.is_xhr and 2 or 0)
+        is_xhr = local.request.headers.get('X-Requested-With') == \
+            'XMLHttpRequest'
+        body = dumps(response, indent=is_xhr and 2 or 0)
         return Response(body + '\n', mimetype='application/json')

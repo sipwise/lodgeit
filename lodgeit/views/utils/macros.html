@@ -2,13 +2,13 @@
   {% if not inline %}
   <form action="" method="get">
   {% endif %}
-    {%- for k, v in args.iteritems() %}
+    {%- for k, v in args.items() %}
     {%- if v %}
     <input type="hidden" name="{{ k|e }}" value="{{ v|e }}">
     {%- endif %}
     {%- endfor %}
     <table class="filterable">
-      {%- for field, _ in filters.iteritems() %}
+      {%- for field, _ in filters.items() %}
       {%- set action, value = _ %}
       {%- set label, type = fields[field] %}
       <tr class="filter_value">
@@ -24,7 +24,7 @@
         <td class="field">{{ label|e }}</td>
         <td class="filter">
           <select name="{{ field }}_action">
-            {%- for k, v in actions[type].iteritems() %}
+            {%- for k, v in actions[type].items() %}
             <option value="{{ k }}"{% if k == action %} selected{% endif %}>
               {{- v|e -}}
             </option>
@@ -46,7 +46,7 @@
           <div class="add{% if not filters %} left{% endif %}">
             {% trans %}new filter: {% endtrans %}<select name="new_filter">
               <option></option>
-              {%- for k, v in fields.iteritems() %}
+              {%- for k, v in fields.items() %}
               {%- if k not in filters %}
               <option value="{{ k }}">{{ v[0]|e }}</option>
               {%- endif %}

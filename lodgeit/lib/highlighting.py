@@ -8,7 +8,6 @@
     :license: BSD
 """
 import re
-import six
 import pygments
 import csv
 from operator import itemgetter
@@ -25,7 +24,7 @@ from lodgeit.lib.diff import prepare_udiff
 from lodgeit.lib.compilerparser import parse_gcc_messages, \
     parse_javac_messages
 
-from werkzeug import escape
+from markupsafe import escape
 
 
 #: we use a hardcoded list here because we want to keep the interface
@@ -90,7 +89,7 @@ def highlight(code, language, _preview=False, _linenos=True):
             lexer = TextLexer()
     style = get_style(name_only=True)
     formatter = HtmlFormatter(linenos=_linenos, cssclass='syntax', style=style)
-    return u'<div class="code">%s</div>' % \
+    return '<div class="code">%s</div>' % \
            pygments.highlight(code, lexer, formatter)
 
 
@@ -128,7 +127,7 @@ def highlight_diff(code, _linenos=True):
         style = get_style(name_only=True)
         formatter = HtmlFormatter(linenos=_linenos, cssclass='syntax',
                                   style=style)
-        return u'<div class="code">%s</div>' % \
+        return '<div class="code">%s</div>' % \
                pygments.highlight(code, lexer, formatter)
     return render_template('utils/udiff.html', diffs=diffs, info=info,
                            linenos=_linenos)
@@ -137,10 +136,7 @@ def highlight_diff(code, _linenos=True):
 def format_creole(code):
     """Format creole syntax."""
     from creoleparser import creole2html
-    rv = creole2html(code)
-    if isinstance(rv, str):
-        rv = rv.decode('utf-8')
-    return u'<div class="wikitext">%s</div>' % rv
+    return '<div class="wikitext">%s</div>' % creole2html(code)
 
 
 def format_csv(code):
@@ -148,14 +144,14 @@ def format_csv(code):
     class dialect(csv.excel):
         quoting = csv.QUOTE_ALL
     result = ['<div class="csv"><table>']
-    lines = code.encode('utf-8').splitlines()
+    lines = code.splitlines()
     for idx, row in enumerate(csv.reader(lines, dialect=dialect)):
         result.append('<tr class="%s">' % (idx % 2 == 0 and 'even' or 'odd'))
         for col in row:
             result.append('<td>%s</td>' % escape(col))
         result.append('</tr>\n')
     result.append('</table></div>')
-    return ''.join(result).decode('utf-8')
+    return ''.join(result)
 
 
 def format_compiler_messages(lines, compiler):
@@ -174,10 +170,10 @@ def highlight_multifile(code):
         section_code = _escaped_marker.sub('', code[start:pos])
         if section_code:
             if filename:
-                filename_html = u'<p class="filename">%s</p>' % escape(filename)
+                filename_html = '<p class="filename">%s</p>' % escape(filename)
             else:
-                filename_html = u''
-            result.append(u'<div class="section">%s%s</div>' % (
+                filename_html = ''
+            result.append('<div class="section">%s%s</div>' % (
                 filename_html, highlight(section_code, lang)))
 
     for match in _section_marker_re.finditer(code):
@@ -192,7 +188,7 @@ def highlight_multifile(code):
 
     highlight_section(len(code))
 
-    return u'<div class="multi">%s</div>' % u'\n'.join(result)
+    return '<div class="multi">%s</div>' % '\n'.join(result)
 
 
 def get_style(request=None, name_only=False):
@@ -200,7 +196,7 @@ def get_style(request=None, name_only=False):
     request = request or local.request
     if not request:
         style_name = DEFAULT_STYLE
-    elif isinstance(request, six.string_types):
+    elif isinstance(request, str):
         style_name = request
     else:
         style_name = request.cookies.get('style')

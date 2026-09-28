@@ -1,9 +1,8 @@
-six
 Jinja2
-Werkzeug<0.16
-Pygments<2.6;python_version<'3'
-Pygments;python_version>='3'
-SQLAlchemy<2.0.0
+Werkzeug>=0.15
+itsdangerous
+Pygments
+SQLAlchemy>=1.4
 PyMySQL
 simplejson
 Babel

@@ -8,7 +8,6 @@
     :license: BSD.
 """
 import inspect
-import six
 from lodgeit.models import Paste
 from lodgeit.database import db
 from lodgeit.lib.xmlrpc import XMLRPCRequestHandler
@@ -39,7 +38,7 @@ def get_public_methods():
     global _public_methods
     if _public_methods is None:
         result = []
-        for name, f in six.iteritems(json.funcs):
+        for name, f in json.funcs.items():
             if name.startswith('system.') or f.hidden:
                 continue
             sig = inspect.signature(f)
@@ -131,8 +130,7 @@ def pastes_get_last():
 def pastes_get_languages():
     """Get a list of supported languages."""
     # this resolves lazy translations
-    return dict((key, six.text_type(value)) for
-                key, value in six.iteritems(LANGUAGES))
+    return dict((key, str(value)) for key, value in LANGUAGES.items())
 
 
 @exported('styles.getStyles')

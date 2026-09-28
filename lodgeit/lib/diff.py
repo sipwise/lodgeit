@@ -9,20 +9,7 @@
 """
 import re
 import time
-
-try:
-    from html import escape
-except ImportError:
-    from cgi import escape
-
-try:
-    all
-except NameError:
-    def all(iterable):
-        for element in iterable:
-            if not element:
-                return False
-        return True
+from html import escape
 
 
 def prepare_udiff(udiff):
@@ -69,7 +56,7 @@ class DiffRenderer(object):
                     tag = 'ins'
                 else:
                     tag = 'del'
-                iterline['line'] = u'%s<%s>%s</%s>%s' % (
+                iterline['line'] = '%s<%s>%s</%s>%s' % (
                     iterline['line'][:start],
                     tag,
                     iterline['line'][start:last],
@@ -191,8 +178,8 @@ class DiffRenderer(object):
                         old_line += affects_old
                         new_line += affects_new
                         lines.append({
-                            'old_lineno':   affects_old and old_line or u'',
-                            'new_lineno':   affects_new and new_line or u'',
+                            'old_lineno':   affects_old and old_line or '',
+                            'new_lineno':   affects_new and new_line or '',
                             'action':       action,
                             'line':         line
                         })

@@ -10,8 +10,7 @@
 import time
 import difflib
 from datetime import datetime
-from six import string_types
-from werkzeug import cached_property
+from werkzeug.utils import cached_property
 
 from lodgeit import local
 from lodgeit.utils import generate_paste_hash
@@ -33,15 +32,16 @@ class Paste(db.Model):
     handled = db.Column(db.Boolean)
     private_id = db.Column(db.String(40), unique=True, nullable=True)
 
-    children = db.relation('Paste', cascade='all',
-                           primaryjoin=parent_id == paste_id,
-                           backref=db.backref('parent', remote_side=[paste_id]))
+    children = db.relationship('Paste', cascade='all',
+                               primaryjoin=parent_id == paste_id,
+                               backref=db.backref('parent',
+                                                  remote_side=[paste_id]))
 
     def __init__(self, code, language, parent_id=None, user_hash=None,
                  private=False):
         if language not in LANGUAGES:
             language = 'text'
-        self.code = u'\n'.join(code.splitlines())
+        self.code = '\n'.join(code.splitlines())
         self.language = language
         # TODO(dc): set these a bit more sanely, allowing two types is bad
         if parent_id:
@@ -56,7 +56,7 @@ class Paste(db.Model):
         """Return the paste for an identifier.  Private pastes must be loaded
         with their unique hash and public with the paste id.
         """
-        if isinstance(identifier, string_types) and not identifier.isdigit():
+        if isinstance(identifier, str) and not identifier.isdigit():
             query = Paste.query.filter_by(private_id=identifier)
         else:
             query = Paste.query.filter_by(paste_id=int(identifier))
@@ -133,7 +133,7 @@ class Paste(db.Model):
 
     def compare_to(self, other, context_lines=4, template=False):
         """Compare the paste with another paste."""
-        udiff = u'\n'.join(difflib.unified_diff(
+        udiff = '\n'.join(difflib.unified_diff(
             self.code.splitlines(),
             other.code.splitlines(),
             fromfile='Paste #%s' % self.identifier,

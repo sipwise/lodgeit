@@ -7,7 +7,6 @@
     :copyright: 2007-2008 by Armin Ronacher, Christopher Grebs.
     :license: BSD
 """
-from __future__ import division
 import re
 from operator import sub
 from itertools import starmap

@@ -7,26 +7,23 @@
     :copyright: 2007-2010 by Armin Ronacher, Christopher Grebs.
     :license: BSD
 """
-import six
 import sys
 from types import ModuleType
 import sqlalchemy
 from sqlalchemy import MetaData
 from sqlalchemy import orm
-from sqlalchemy.ext.declarative import declarative_base
-from lodgeit.local import application, _local_manager
+from lodgeit.local import application
 
 
 metadata = MetaData()
 
 
 def session_factory():
-    options = {'autoflush': True, 'autocommit': False}
-    return orm.create_session(application.engine, **options)
+    options = {'autoflush': True, 'expire_on_commit': False}
+    return orm.Session(application.engine, **options)
 
 
-session = orm.scoped_session(session_factory,
-                             scopefunc=_local_manager.get_ident)
+session = orm.scoped_session(session_factory)
 
 
 class ModelBase(object):
@@ -38,16 +35,15 @@ class ModelBase(object):
 
 
 # configure the declarative base
-Model = declarative_base(name='Model', cls=ModelBase,
-                         mapper=orm.mapper, metadata=metadata)
+Model = orm.declarative_base(name='Model', cls=ModelBase, metadata=metadata)
 ModelBase.query = session.query_property()
 
 
 def _make_module():
     db = ModuleType('db')
     for mod in sqlalchemy, orm:
-        for key, value in six.iteritems(mod.__dict__):
-            if key in mod.__all__:
+        for key, value in mod.__dict__.items():
+            if not key.startswith('_'):
                 setattr(db, key, value)
 
     db.session = session

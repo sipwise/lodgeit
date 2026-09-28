@@ -7,7 +7,8 @@
     :copyright: 2007-2008 by Armin Ronacher, Christopher Grebs.
     :license: BSD
 """
-from werkzeug import redirect, Response
+from werkzeug.utils import redirect
+from werkzeug.wrappers import Response
 from werkzeug.exceptions import NotFound
 from lodgeit import local
 from lodgeit.lib import antispam
@@ -39,7 +40,7 @@ class PasteController(object):
         getform = req.form.get
 
         if local.request.method == 'POST':
-            code = getform('code', u'')
+            code = getform('code', '')
             language = getform('language')
             parent_id = getform('parent')
             spam = getform('webpage') or antispam.is_spam(code)

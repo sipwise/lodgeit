@@ -10,7 +10,6 @@
 import os
 from babel import Locale, dates, UnknownLocaleError
 from babel.support import Translations
-from six import text_type
 
 from lodgeit import local
 
@@ -34,7 +33,7 @@ def gettext(string):
     request = getattr(local, 'request', None)
     if not request:
         return string
-    return request.translations.ugettext(string)
+    return request.translations.gettext(string)
 
 
 def ngettext(singular, plural, n):
@@ -46,7 +45,7 @@ def ngettext(singular, plural, n):
         if n == 1:
             return singular
         return plural
-    return request.translations.ungettext(singular, plural, n)
+    return request.translations.ngettext(singular, plural, n)
 
 
 def format_datetime(datetime=None, format='medium'):
@@ -105,11 +104,11 @@ class _TranslationProxy(object):
     def __contains__(self, key):
         return key in self.value
 
-    def __nonzero__(self):
+    def __bool__(self):
         return bool(self.value)
 
     def __dir__(self):
-        return dir(text_type)
+        return dir(str)
 
     def __iter__(self):
         return iter(self.value)
@@ -119,9 +118,6 @@ class _TranslationProxy(object):
 
     def __str__(self):
         return str(self.value)
-
-    def __unicode__(self):
-        return text_type(self.value)
 
     def __add__(self, other):
         return self.value + other
@@ -159,6 +155,9 @@ class _TranslationProxy(object):
     def __ge__(self, other):
         return self.value >= other
 
+    def __hash__(self):
+        return hash(self.value)
+
     def __getattr__(self, name):
         if name == '__members__':
             return self.__dir__()
@@ -169,7 +168,7 @@ class _TranslationProxy(object):
 
     def __repr__(self):
         try:
-            return 'i' + repr(text_type(self.value))
+            return 'i' + repr(str(self.value))
         except ValueError:
             return '<%s broken>' % self.__class__.__name__
 

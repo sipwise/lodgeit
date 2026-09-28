@@ -67,7 +67,7 @@ def get_args():
 class Pastes(object):
     def __init__(self, uri):
         self.uri = uri
-        self.session = self._create_session()
+        self.engine = create_engine(self.uri)
         self.pastes = Paste.__table__
 
     @staticmethod
@@ -85,14 +85,6 @@ class Pastes(object):
         elif delta_type.group(2) == 'd':
             return {'days': int(delta_type.group(1))}
 
-    def _create_session(self):
-        """
-        Create DB connection and return session
-        """
-        engine = create_engine(self.uri)
-        session = engine.connect()
-        return session
-
     def delete_by_date(self, start=str(), end=str(), delta="1d"):
         """
         Delete pastes which were created during provided timeframe
@@ -106,23 +98,25 @@ class Pastes(object):
         elif not start and end:
             start = end - timedelta(**delta_args)
 
-        self.session.execute(
-            self.pastes.delete().where(
-                self.pastes.c.pub_date < end
-            ).where(
-                self.pastes.c.pub_date > start
+        with self.engine.begin() as conn:
+            conn.execute(
+                self.pastes.delete().where(
+                    self.pastes.c.pub_date < end
+                ).where(
+                    self.pastes.c.pub_date > start
+                )
             )
-        )
 
     def delete_by_id(self, paste_id):
         """
         Delete pastes by public ID
         """
-        self.session.execute(
-            self.pastes.delete().where(
-                self.pastes.c.paste_id == paste_id
+        with self.engine.begin() as conn:
+            conn.execute(
+                self.pastes.delete().where(
+                    self.pastes.c.paste_id == paste_id
+                )
             )
-        )
 
 
 def main():

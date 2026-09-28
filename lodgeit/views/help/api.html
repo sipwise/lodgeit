@@ -16,7 +16,7 @@
     using Python the following piece of code connects you to the XMLRPC service:{% endtrans %}
   </p>
   <pre class="sample">{% filter escape %}
->>> from xmlrpclib import ServerProxy
+>>> from xmlrpc.client import ServerProxy
 >>> s = ServerProxy('{{ pastebin_url|escape }}xmlrpc/')
 {% endfilter %}</pre>
   <p>

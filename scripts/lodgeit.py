@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
     LodgeIt!
     ~~~~~~~~
@@ -21,10 +21,8 @@
               2006 Matt Good <matt@matt-good.net>,
               2005 Raphael Slinckx <raphael@slinckx.net>
 """
-from __future__ import print_function
 import os
 import sys
-from six import text_type
 from optparse import OptionParser
 
 
@@ -81,36 +79,36 @@ def load_default_settings():
     return settings
 
 
-def make_utf8(text, encoding):
-    """Convert a text to UTF-8, brute-force."""
+def decode_text(text, encoding):
+    """Decode bytes to a string, brute-force."""
     try:
-        u = text_type(text, 'utf-8')
+        u = text.decode('utf-8')
         uenc = 'utf-8'
     except UnicodeError:
         try:
-            u = text_type(text, encoding)
+            u = text.decode(encoding)
             uenc = 'utf-8'
         except UnicodeError:
-            u = text_type(text, 'iso-8859-15', 'ignore')
+            u = text.decode('iso-8859-15', 'ignore')
             uenc = 'iso-8859-15'
     try:
         import chardet
     except ImportError:
-        return u.encode('utf-8')
+        return u
     d = chardet.detect(text)
-    if d['encoding'] == uenc:
-        return u.encode('utf-8')
-    return text_type(text, d['encoding'], 'ignore').encode('utf-8')
+    if d['encoding'] is None or d['encoding'] == uenc:
+        return u
+    return text.decode(d['encoding'], 'ignore')
 
 
 def get_xmlrpc_service():
     """Create the XMLRPC server proxy and cache it."""
     global _xmlrpc_service
-    import xmlrpclib
+    import xmlrpc.client
     if _xmlrpc_service is None:
         try:
-            _xmlrpc_service = xmlrpclib.ServerProxy(_server_name + 'xmlrpc/',
-                                                    allow_none=True)
+            _xmlrpc_service = xmlrpc.client.ServerProxy(
+                _server_name + 'xmlrpc/', allow_none=True)
         except Exception as err:
             fail('Could not connect to Pastebin: %s' % err, -1)
     return _xmlrpc_service
@@ -132,7 +130,7 @@ def copy_url(url):
             except OSError:
                 continue
             else:
-                client.stdin.write(url)
+                client.stdin.write(url.encode('utf-8'))
                 client.stdin.close()
                 client.wait()
                 break
@@ -184,8 +182,8 @@ def get_mimetype(data, filename):
 def print_languages():
     """Print a list of all supported languages, with description."""
     xmlrpc = get_xmlrpc_service()
-    languages = xmlrpc.pastes.getLanguages().items()
-    languages.sort(key=lambda a: a[1].lower())
+    languages = sorted(xmlrpc.pastes.getLanguages().items(),
+                       key=lambda a: a[1].lower())
     print('Supported Languages:')
     for alias, name in languages:
         print('    %-30s%s' % (alias, name))
@@ -197,7 +195,7 @@ def download_paste(uid):
     paste = xmlrpc.pastes.getPaste(uid)
     if not paste:
         fail('Paste "%s" does not exist.' % uid, 5)
-    print(paste['code'].encode('utf-8'))
+    print(paste['code'])
 
 
 def create_paste(code, language, filename, mimetype, private):
@@ -221,7 +219,7 @@ def compile_paste(filenames, langopt):
     mime = ''
     lang = langopt or ''
     if not filenames:
-        data = read_file(sys.stdin)
+        data = read_file(sys.stdin.buffer)
         print('Pasting...')
         if not langopt:
             mime = get_mimetype(data, '') or ''
@@ -236,12 +234,13 @@ def compile_paste(filenames, langopt):
         for fname in filenames:
             data = read_file(open(fname, 'rb'))
             if langopt:
-                result.append('### %s [%s]\n\n' % (fname, langopt))
+                header = '### %s [%s]\n\n' % (fname, langopt)
             else:
-                result.append('### %s\n\n' % fname)
+                header = '### %s\n\n' % fname
+            result.append(os.fsencode(header))
             result.append(data)
-            result.append('\n\n')
-        data = ''.join(result)
+            result.append(b'\n\n')
+        data = b''.join(result)
         lang = 'multi'
         fname = ''
     return data, lang, fname, mime
@@ -317,7 +316,7 @@ def main():
         fail('Aborted, no content to paste.', 4)
 
     # create paste
-    code = make_utf8(data, opts.encoding)
+    code = decode_text(data, opts.encoding)
     pid = create_paste(code, language, filename, mimetype, opts.private)
     url = '%sshow/%s/' % (_server_name, pid)
     print(url)

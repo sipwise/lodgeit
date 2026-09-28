@@ -7,27 +7,25 @@
     :copyright: 2008 by Christopher Grebs.
     :license: BSD.
 """
-import six
-
 from lodgeit.i18n import _
 from lodgeit.utils import render_template
 
 
 ACTIONS = {
     'str': {
-        'is':           _(u'is'),
-        'contains':     _(u'contains'),
+        'is':           _('is'),
+        'contains':     _('contains'),
         'startswith':   _('startswith'),
     },
     'int': {
-        'is':           _(u'is'),
-        'greater':      _(u'greater'),
-        'lower':        _(u'lower'),
+        'is':           _('is'),
+        'greater':      _('greater'),
+        'lower':        _('lower'),
     },
     'date': {
-        'is':           _(u'same date'),
-        'greater':      _(u'later'),
-        'lower':        _(u'earlier'),
+        'is':           _('same date'),
+        'greater':      _('later'),
+        'lower':        _('earlier'),
     }
 }
 ACTIONS_MAP = {
@@ -72,7 +70,7 @@ class Filterable(object):
         return ret
 
     def get_objects(self):
-        for field, filter in six.iteritems(self.filters):
+        for field, filter in self.filters.items():
             action, value = filter
             if value:
                 func = ACTIONS_MAP[action]

@@ -11,6 +11,7 @@
 import subprocess
 
 try:
-    lodgeit_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'])[:7]
+    lodgeit_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'],
+                                              text=True)[:7]
 except Exception:
     lodgeit_version = ""

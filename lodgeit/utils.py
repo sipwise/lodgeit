@@ -11,12 +11,12 @@ import base64
 import os
 import re
 import time
+from hashlib import sha1
 from os import path
 from random import random
 from functools import partial
 
-from werkzeug import Request as RequestBase, Response
-from werkzeug.contrib.securecookie import SecureCookie
+from werkzeug.wrappers import Request as RequestBase, Response
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -24,11 +24,7 @@ from babel import Locale
 
 from lodgeit import local
 from lodgeit.i18n import get_translations
-
-try:
-    from hashlib import sha1
-except ImportError:
-    from sha import new as sha1
+from lodgeit.lib.securecookie import SecureCookie
 
 #: Jinja2 Environment for our template handling
 jinja_environment = Environment(loader=FileSystemLoader(
@@ -37,7 +33,7 @@ jinja_environment = Environment(loader=FileSystemLoader(
 
 #: constants
 _word_only = partial(re.compile(r'[^a-zA-Z0-9]').sub, '')
-COOKIE_NAME = u'lodgeit_session'
+COOKIE_NAME = 'lodgeit_session'
 
 
 def url_for(endpoint, external=False, **values):
@@ -61,7 +57,7 @@ def generate_paste_hash():
     while 1:
         hash_base = '%s|%s' % (random(), time.time())
         digest = sha1(hash_base.encode()).digest()
-        val = _word_only(str(base64.b64encode(digest)).strip())[:20]
+        val = _word_only(base64.b64encode(digest).decode('ascii'))[:20]
         # sanity check.  number only not allowed (though unlikely)
         if not val.isdigit():
             return val
@@ -72,7 +68,6 @@ class Request(RequestBase):
     `user_hash` and sets `first_visit` to `True` if it's a new user.
     It also stores the engine and dbsession on it.
     """
-    charset = 'utf-8'
 
     def __init__(self, environ):
         super(Request, self).__init__(environ)
@@ -108,8 +103,8 @@ def render_template(template_name, **context):
     request = local.request
     context.update(
         request=request,
-        gettext=request.translations.ugettext,
-        ngettext=request.translations.ungettext
+        gettext=request.translations.gettext,
+        ngettext=request.translations.ngettext
     )
     return jinja_environment.get_template(template_name).render(context)
 

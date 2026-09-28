@@ -1,7 +1,7 @@
 import unittest
 
 from werkzeug.test import Client
-from werkzeug.wrappers import BaseResponse
+from werkzeug.wrappers import Response
 
 from lodgeit.application import db, make_app
 from lodgeit.models import Paste
@@ -26,7 +26,7 @@ def json(response):
 class BaseTestCase(unittest.TestCase):
     def setUp(self):
         self.client = Client(
-                make_app('sqlite://', 'NONE', False, True), BaseResponse)
+                make_app('sqlite://', 'NONE', False, True), Response)
 
     def teardown(self):
         Paste.query.delete()
