@@ -67,3 +67,20 @@ class APITestCase(BaseTestCase):
         assert is_json(resp)
         expected = [[u'%s' % x, u'%s' % STYLES[x]] for x in STYLES]
         assert json(resp)['data'] == expected
+
+    def test_json_post_reply_and_get(self):
+        data = '{"language": "text", "code": "parent"}'
+        resp = self.post_json('pastes.newPaste', data)
+        assert is_json(resp)
+        parent_id = json(resp)['data']
+
+        data = ('{"language": "text", "code": "reply", "parent_id": "%s"}'
+                % parent_id)
+        resp = self.post_json('pastes.newPaste', data)
+        assert is_json(resp)
+        assert json(resp)['error'] is None
+
+        resp = self.post_json('pastes.getPaste',
+                              '{"paste_id": "%s"}' % json(resp)['data'])
+        assert is_json(resp)
+        assert json(resp)['data']['parent_id'] == int(parent_id)

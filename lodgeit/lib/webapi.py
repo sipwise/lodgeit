@@ -78,8 +78,9 @@ def pastes_new_paste(language, code, parent_id=None,
         parent = Paste.get(parent_id)
         if parent is None:
             raise ValueError('parent paste not found')
+        parent_id = parent.paste_id
 
-    paste = Paste(code, language, parent, private=private)
+    paste = Paste(code, language, parent_id, private=private)
     db.session.add(paste)
     db.session.commit()
     return paste.identifier

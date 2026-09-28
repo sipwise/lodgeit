@@ -85,7 +85,7 @@ def make_app(dburi=None, secret_key=None, debug=False, shell=False):
 
     static_path = os.path.join(os.path.dirname(__file__), 'static')
     app = LodgeIt(dburi, secret_key,
-                  pool_recycle=os.getenv('LODGEIT_POOL_RECYCLE', 3600))
+                  pool_recycle=int(os.getenv('LODGEIT_POOL_RECYCLE', 3600)))
     if debug:
         app.engine.echo = True
     app.bind_to_context()

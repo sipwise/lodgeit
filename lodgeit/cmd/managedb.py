@@ -53,13 +53,17 @@ def get_args():
         "--start",
         dest="start",
         action="store",
-        help="Datetime starting from which pastes will be selected",
+        type=datetime.fromisoformat,
+        help="Datetime starting from which pastes will be selected "
+             "(ISO 8601, e.g. 2026-01-31 or '2026-01-31 12:00')",
     )
     parser.add_argument(
         "--end",
         dest="end",
         action="store",
-        help="Datetime until which pastes will be selected",
+        type=datetime.fromisoformat,
+        help="Datetime until which pastes will be selected "
+             "(ISO 8601, e.g. 2026-01-31 or '2026-01-31 12:00')",
     )
     return parser.parse_args()
 
@@ -123,12 +127,12 @@ def main():
     args = vars(get_args())
     pastes = Pastes(args['dburi'])
     if args['action'] == 'delete':
-        if 'id' in args:
+        if args['id'] is not None:
             pastes.delete_by_id(args['id'])
         else:
             pastes.delete_by_date(
-                start=args['start'] if 'start' in args else str(),
-                end=args['end'] if 'end' in args else str(),
+                start=args['start'],
+                end=args['end'],
                 delta=args['delta'],
             )
 

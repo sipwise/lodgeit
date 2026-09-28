@@ -96,7 +96,7 @@ class Request(RequestBase):
         return get_translations(self.locale)
 
     def bind_to_context(self):
-        local.request = self
+        local.ctx.request = self
 
 
 def render_template(template_name, **context):
